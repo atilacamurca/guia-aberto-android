@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout
+android:id="@+id/widget31"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android">
+   <TableLayout
+      android:id="@+id/widget32"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:stretchColumns="1">
+      <TableRow
+         android:id="@+id/widget33"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+         <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome"></TextView>
+         <EditText
+            android:id="@+id/etNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></EditText>
+      </TableRow>
+      <!-- faça mais duas TableRow's contendo o Telefone e E-mail -->
+      <Button
+         android:id="@+id/btSalvar"
+         android:text="Salvar"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"></Button>
+   </TableLayout>
+</RelativeLayout>

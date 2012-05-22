@@ -1,0 +1,79 @@
+\documentclass[a4paper,11pt]{book}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{lmodern}
+
+\usepackage[brazil]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{relsize}
+
+% tabular
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{colortbl}
+% tabular
+
+\usepackage{array}
+\usepackage{relsize}
+% -- hyperlink text
+\usepackage[colorlinks,
+  urlcolor=blue,
+  hyperindex,
+  pdfdisplaydoctitle,
+  pageanchor,
+  linkcolor=blue]{hyperref}
+% -- hyperlink text
+
+% -- syntax highlight
+\usepackage{minted}
+\usemintedstyle{pastie}
+% -- syntax highlight
+% -- style for bash code
+\definecolor{ruleclr}{rgb}{0.95,0.95,0.95}
+\newminted[jssnippet]{javascript}{frame=single,tabsize=3}
+% -- style for bash code
+% -- title pic
+\usepackage{titlepic}
+% -- title pic
+
+\usepackage[hmargin=3cm,vmargin=3.5cm]{geometry}
+
+\renewcommand\listoflistingscaption{Lista de Códigos-fonte}
+\renewcommand\listingscaption{Código-fonte}
+\renewcommand{\arraystretch}{1.5} % ajusta altura das linhas das tabelas.
+\renewcommand{\labelitemi}{$\blacktriangleright$}
+\renewcommand{\labelitemii}{$\triangleright$}
+\newcommand{\degree}{\ensuremath{^\circ}}
+
+\definecolor{purple-code}{RGB}{92,53,102}
+
+\newcommand{\inlinecode}[1]{
+ {\bfseries\ttfamily\textcolor[RGB]{92,53,102}{#1}}}
+\newcommand{\menuaction}[1]{
+ {\bfseries\ttfamily\textcolor[RGB]{206,92,0}{#1}}}
+
+\title{Introdução ao Android}
+\author{Átila Camurça Alves\\1\degree Edição}
+\titlepic{\includegraphics[width=0.6\textwidth]{cover.jpg}}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\listoflistings
+
+\include{preparando-ambiente}
+
+\include{exemplo-pratico}
+
+\include{receitas-alertdialog}
+
+\include{receitas-i18n}
+
+\include{sobre}
+
+\end{document}
