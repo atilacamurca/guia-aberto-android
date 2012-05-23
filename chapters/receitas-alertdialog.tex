@@ -1,0 +1,218 @@
+\chapter{Livro de Receitas}
+
+\section{Mostrando Diálogos}
+
+No Android podemos criar diálogos no \texttt{Activity} mostrando opções ao usuário, como por exemplo,
+escolher itens de uma lista, ou responder sim ou não a uma ação, etc.
+
+Vamos incrementar algumas partes de nosso código e tentar encaixar algumas funcionalidades
+relacionadas.
+
+\subsection{Editar/Excluir ao clicar e segurar na ListView}
+
+Vamos implementar uma ação comum no mundo Android, que ao clicar e segurar num item
+da \texttt{ListView}, ele mostra opções editar e excluir, por exemplo. Isto pode ser
+feito facilmente usando \texttt{AlertDialog.Builder}, uma classe com métodos pré-prontos
+para serem usados por você.
+
+Neste exemplo precisaremos editar \texttt{ContatoHelper} e adicionar um método para
+deletar um contato, editar nosso \texttt{MainActivity} no método \inlinecode{configurar}
+e adicionar um \textit{Listener} que ao clicar e segurar num item da \texttt{ListView}
+um método é acionado. Vamos a implementação:
+
+% ContatoHelper.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/ContatoHelper-5.java }
+  \caption{Deletar dados existentes [ContatoHelper.java]}
+\end{listing}
+
+% MainActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-8.java }
+  \caption{Adicionar Listener para click longo [MainActivity.java]}
+\end{listing}
+
+Note a necessidade de um novo método em \texttt{MainActivity}, o \inlinecode{exibirMensagem}.
+Ele é bastante útil quando se quer exibir uma mensagem rapidamente e depois ela suma.
+Para isso usamos a classe \texttt{Toast}.
+
+\subsection{Diálogo de confirmação}
+
+Deletar algo é uma coisa que deve ser feita com cuidado, então sempre é bom confirmar com
+o usuário se ele deseja realmente deletar um contato. Para isso usaremos o \texttt{AlertDialog.Builder}
+mais uma vez, agora apenas com uma mensagem e os botões \textit{Sim} ou \textit{Não}.
+
+
+Ainda em \texttt{MainActivity} criaremos um outro \texttt{AlertDialog.Builder} no momento que o usuário
+clicar em \texttt{Deletar}. Segue o trecho:
+
+% MainActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-9.java }
+  \caption{Diálogo de confirmação ao deletar contato [MainActivity.java]}
+\end{listing}
+
+Pronto, agora o trecho que deleta o contato foi movido para dentro do \textit{Listener} do botão
+\textit{Sim}. No botão \textit{Não} passamos \texttt{null} no \textit{Listener}, pois caso
+seja a opção escolhida apenas fazemos nada. Você pode se quiser criar um \textit{Listener} e mostrar
+uma mensagem do tipo, \textit{Cancelado pelo usuário}, para isso usando o método \inlinecode{exibirMensagem}.
+
+% DONE: fazer validação do telefone e do e-mail
+
+\subsection{Entrada de diferentes tipos de dados}
+
+O Android foi desenvolvido com muitos recursos pré-prontos para facilitar o desenvolvimento de aplicações.
+Um recurso bastante útil é a distinção dos dados que irão ser inseridos nos \texttt{TextView}'s. Com isso
+o teclado virtual do cliente se adapta ao tipo de dado que será inserido. No nosso caso faremos distinção
+do campo \texttt{telefone}, onde apenas números e hífens(-) podem ser inseridos, e o campo \texttt{e-mail}
+onde a presença do arroba(@) e pontos(.) são elementos essenciais.
+
+Vejamos alguns valores aceitos pelo \texttt{inputType}:
+
+\begin{itemize}
+
+  \item Para textos:
+  \begin{itemize}
+    \item text
+    \item textCapCharacters
+    \item textMultiLine
+    \item textUri
+    \item textEmailAddress
+    \item textPersonName
+    \item textPassword
+    \item textVisiblePassword
+  \end{itemize}
+
+  \item Para números:
+  \begin{itemize}
+    \item number
+    \item numberSigned
+    \item numberDecimal
+    \item phone
+    \item datetime
+    \item date
+    \item time
+  \end{itemize}
+
+\end{itemize}
+
+Precisaremos alterar apenas o \texttt{salvar.xml} localizado em \texttt{res/layout}. Localize o atributo
+\texttt{inputType} dos campos \texttt{telefone} e \texttt{e-mail} e altere os valores da seguinte maneira:
+
+% res/layout/salvar.xml
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/salvar-2.xml }
+  \caption{Distinção de dados [res/layout/salvar.xml]}
+\end{listing}
+
+\subsection{Validação de dados}
+
+Mesmo configurando um \texttt{inputType} para seu \texttt{TextView} pode não ser o bastante para que
+os dados inseridos estejam corretos. Para isso usaremos a classe \texttt{Patterns} do pacote
+\texttt{android.util}. Nela podemos encontrar alguns objetos bastante úteis na hora de validar
+dados. Entre eles estão os objetos \texttt{Patterns.EMAIL\b{ }ADDRESS} e \texttt{Patterns.PHONE}. Com
+eles podemos validar de forma simples os dados inseridos em nosso formulário.
+
+Em nosso \texttt{SalvarActivity} adicionaremos um método \inlinecode{validar} passando como parâmetro
+um \texttt{Contato}. Copie o método \inlinecode{exibirMensagem} da classe \texttt{MainActivity} para
+mostrar uma mensagem caso alguma validação seja falsa.
+
+\paragraph{OBS:} Para um melhor reuso crie uma classe abstrata que implementa o método \inlinecode{exibirMensagem}
+e que extenda de \texttt{Activity} e faça com que seus \texttt{Activity}'s herdem dela. É uma boa
+prática.
+
+Vamos ao trecho de código:
+
+% SaveActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/SalvarActivity-4.java }
+  \caption{Validação dos dados [SalvarActivity.java]}
+\end{listing}
+
+% TODO: fazer com que ao clicar e segurar fazer uma chamada ou enviar e-mail para o contato.
+\subsection{Fazendo uma ligação}
+
+Já que estamos fazendo uma lista de contatos nada melhor que usar o número do telefone dos
+contatos inseridos para realizar chamadas. Para isso vamos aprender um pouco sobre \textbf{Permissões}.
+
+Permissões no Android são definidas no \texttt{AndroidManifest.xml}. Ao instalar seu aplicativo,
+o usuário saberá quais as permissões que o seu aplicativo necessita para ser executado.
+
+Por padrão, o Android traz uma série de permissões que auxiliam seu aplicativo a se comunicar com
+o aparelho. Abaixo alguns exemplos:
+
+\begin{itemize}
+\item Verificação
+\begin{itemize}
+  \item \texttt{ACCESS\b{ }NETWORK\b{ }STATE}
+  \item \texttt{ACCESS\b{ }WIFI\b{ }STATE}
+  \item \texttt{BATTERY\b{ }STATS}
+\end{itemize}
+
+\item Comunicação
+\begin{itemize}
+  \item \texttt{BLUETOOTH}
+  \item \texttt{CALL\b{ }PHONE}
+  \item \texttt{INTERNET}
+  \item \texttt{SEND\b{ }SMS}
+\end{itemize}
+
+\end{itemize}
+
+A lista completa pode ser vista em 
+\url{http://developer.android.com/reference/android/Manifest.permission.html}.\\
+
+Edite o \texttt{AndroidManifest.xml} e adicione a permissao \texttt{CALL\b{ }PHONE}.
+
+% AndroidManifest.xml
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/AndroidManifest-3.xml }
+  \caption{Permissão de realizar chamadas [AndroidManifest.xml]}
+\end{listing}
+
+Agora vamos adicionar um item ao diálogo que aparece ao clicar e segurar um item da \texttt{ListView}.
+Ele servirá para implementarmos o trecho que realiza a chamada. Vamos a ele:
+
+% MainActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-10.java }
+  \caption{Item chamar no diálogo [MainActivity.java]}
+\end{listing}
+
+\subsection{Enviando e-mail}
+
+Para envio de e-mail você pode simplesmente usar a aplicação de e-mail padrão do aparelho.
+Seguindo o mesmo princípio do exemplo anterior vamos apenas inserir um trecho de código
+no método \inlinecode{configurar} da classe \texttt{MainActivity}:
+
+% MainActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-11.java }
+  \caption{Item enviar e-mail no diálogo [MainActivity.java]}
+\end{listing}
+
+Ao testar no emulador você receberá a mensagem: \textbf{No applications can perform this action}. Traduzindo
+quer dizer que: Nenhuma aplicação pode executar esta ação. Em outras palavras, nenhum cliente de e-mail
+foi encontrado.
+ 
+% protected void sendnotification (String title, String message) {
+%    String ns = Context.NOTIFICATION_SERVICE;
+%    NotificationManager mNotificationManager = (NotificationManager) getSystemService(ns);
+%  
+%    int icon = R.drawable.icon;
+%    CharSequence tickerText = message;
+%    long when = System.currentTimeMillis();
+% 
+%    Notification notification = new Notification(icon, tickerText, when);
+% 
+%    Context context = getApplicationContext();
+%    CharSequence contentTitle = title;
+%    CharSequence contentText = message;
+%    Intent notificationIntent = new Intent(this, AndroToDo.class);
+%    PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+% 
+%    notification.flags = Notification.FLAG_AUTO_CANCEL;
+%    notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
+%    mNotificationManager.notify(NOTIFICATION_ID, notification);
+% }
+% // see http://androidsnippets.com/send-a-notification

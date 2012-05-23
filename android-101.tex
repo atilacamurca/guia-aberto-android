@@ -56,8 +56,23 @@
 \newcommand{\menuaction}[1]{
  {\bfseries\ttfamily\textcolor[RGB]{206,92,0}{#1}}}
 
-\title{Introdução ao Android}
-\author{Átila Camurça Alves\\1\degree Edição}
+% -- glossary
+\usepackage[toc=true,style=list]{glossary}
+
+\makeglossary
+
+\storeglosentry{ide}{name=IDE,description=Integrated Development Environment (Ambiente de Desenvolvimento Integrado)}
+\storeglosentry{adt}{name=ADT,description=Android Development Tools (Ferramentas de Desenvolvimento Android)}
+\storeglosentry{api}{name=API,description=Application Programming Interface (Interface de Programação de Aplicativos)}
+\storeglosentry{jdk}{name=JDK,description=Java Development Kit. Refere-se ao Java utilizado para desenvolvimento}
+\storeglosentry{sdk}{name=SDK,description=Software Development Kit}
+\storeglosentry{avd}{name=AVD,description=Android Virtual Device}
+\storeglosentry{xml}{name=xml,description=eXtensible Markup Language}
+\storeglosentry{ddl}{name=DDL,description=Data Definition Language}
+% -- glossary
+
+\title{O Guia Aberto de Android}
+\author{Átila Camurça Alves\\2\degree Edição}
 \titlepic{\includegraphics[width=0.6\textwidth]{cover.jpg}}
 
 \begin{document}
@@ -66,14 +81,18 @@
 \tableofcontents
 \listoflistings
 
-\include{preparando-ambiente}
+% capítulos
+\include{chapters/preparando-ambiente}
 
-\include{exemplo-pratico}
+\include{chapters/exemplo-pratico}
 
-\include{receitas-alertdialog}
+\include{chapters/receitas-alertdialog}
 
-\include{receitas-i18n}
+\include{chapters/receitas-i18n}
 
-\include{sobre}
+% apêndices
+\include{chapters/sobre}
+
+\printglossary
 
 \end{document}
