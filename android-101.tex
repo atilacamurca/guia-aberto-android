@@ -56,23 +56,36 @@
 \newcommand{\menuaction}[1]{
  {\bfseries\ttfamily\textcolor[RGB]{206,92,0}{#1}}}
 
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
 % -- glossary
 \usepackage[toc=true,style=list]{glossary}
 
 \makeglossary
 
-\storeglosentry{ide}{name=IDE,description=Integrated Development Environment (Ambiente de Desenvolvimento Integrado)}
+\storeglosentry{ide}{name=IDE,description={Integrated Development Environment (Ambiente de Desenvolvimento Integrado),
+são softwares que auxiliam no desenvolvimento de outros softwares. Ex. NetBeans IDE \url{http://netbeans.org/},
+Eclipse IDE \url{http://www.eclipse.org/}}}
 \storeglosentry{adt}{name=ADT,description=Android Development Tools (Ferramentas de Desenvolvimento Android)}
 \storeglosentry{api}{name=API,description=Application Programming Interface (Interface de Programação de Aplicativos)}
-\storeglosentry{jdk}{name=JDK,description=Java Development Kit. Refere-se ao Java utilizado para desenvolvimento}
-\storeglosentry{sdk}{name=SDK,description=Software Development Kit}
+\storeglosentry{jdk}{name=JDK,description={Java Development Kit (Kit de Desenvolvimento Java).
+Refere-se ao Java utilizado para desenvolvimento}}
+\storeglosentry{sdk}{name=SDK,description=Software Development Kit (Kit de Desenvolvimento de Software)}
 \storeglosentry{avd}{name=AVD,description=Android Virtual Device}
-\storeglosentry{xml}{name=xml,description=eXtensible Markup Language}
-\storeglosentry{ddl}{name=DDL,description=Data Definition Language}
+\storeglosentry{xml}{name=xml,description={eXtensible Markup Language, foi desenvolvida com o propósito de
+estruturar, armazenar e transportar informações.}}
+\storeglosentry{ddl}{name=DDL,description={Data Definition Language (Linguagem de Definição de Dados),
+é a parte do SQL que permite que as tabelas do banco de dados sejam criadas,
+alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas,
+além de impor restrições entre tabelas.}}
+\storeglosentry{debug}{name=debug,description={termo utilizado para indicar quais as operações que
+estão sendo executadas, verificando assim se estão funcionando como deveria ou se existem defeitos.}}
 % -- glossary
 
 \title{O Guia Aberto de Android}
-\author{Átila Camurça Alves\\2\degree Edição}
+\author{Átila Camurça Alves\\2ª Edição}
 \titlepic{\includegraphics[width=0.6\textwidth]{cover.jpg}}
 
 \begin{document}
@@ -80,15 +93,14 @@
 \maketitle
 \tableofcontents
 \listoflistings
+\listoftables
 
 % capítulos
 \include{chapters/preparando-ambiente}
 
 \include{chapters/exemplo-pratico}
 
-\include{chapters/receitas-alertdialog}
-
-\include{chapters/receitas-i18n}
+\include{chapters/receitas}
 
 % apêndices
 \include{chapters/sobre}

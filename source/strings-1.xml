@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ... -->
+    <string-array name="array_grupos">
+        <item>amigos</item>
+        <item>trabalho</item>
+        <item>conhecidos</item>
+        <item>família</item>
+    </string-array>
+    <string-array name="index_array_grupos">
+        <item>0</item><item>1</item>
+        <item>2</item><item>3</item>
+    </string-array>
+</resources>

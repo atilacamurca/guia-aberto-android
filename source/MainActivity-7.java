@@ -1,5 +1,5 @@
 /* ... */
-public static final String _ID = "app.contatos._ID";
+public static final String _ID = "contatos.app._ID";
 
 @Override
 public void onCreate(Bundle icicle) {

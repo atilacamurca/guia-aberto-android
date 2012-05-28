@@ -5,11 +5,7 @@ public Cursor ler(String id) {
 			params);
 }
 
-public void atualizar(String id, Contato contato) {
-	ContentValues cv = new ContentValues();
-	cv.put("nome", contato.getNome());
-	cv.put("telefone", contato.getTelefone());
-	cv.put("email", contato.getEmail());
+public void atualizar(String id, ContentValues values) {
 	String[] params = {id};
-	getWritableDatabase().update("contato", cv, "_id = ?", params);
+	getWritableDatabase().update("contato", values, "_id = ?", params);
 }

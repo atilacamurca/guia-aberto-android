@@ -20,11 +20,11 @@ public void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
 
       public void onClick(View view) {
-         Contato contato = new Contato();
-         contato.setNome(etNome.getText().toString());
-         contato.setFone(etFone.getText().toString());
-         contato.setEmail(etEmail.getText().toString());
-         helper.criar(contato);
+         ContentValues values = new ContentValues();
+			values.put("nome", etNome.getText().toString());
+			values.put("telefone", etTefone.getText().toString());
+			values.put("email", etEmail.getText().toString());
+         helper.criar(values);
          finish();
       }
    });

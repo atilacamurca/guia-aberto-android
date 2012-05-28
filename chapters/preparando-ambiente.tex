@@ -14,6 +14,8 @@ Para esta apostila serão utilizados os seguintes aplicativos e bibliotecas:
 \item Android 2.2 API 8
 \item Eclipse Indigo
 \item ADT Plugin
+\item Sqlite3
+\item Sqliteman
 \end{itemize}
 
 Você pode estar se perguntando: "Por que utilizar essa configuração?". Bom, para começar
@@ -195,3 +197,84 @@ rodando.
 \paragraph{Dica:} uma vez que você abriu o emulador não o feche. Você irá notar que ao abrir
 pela primeira vez ele leva um tempo para isso. Neste caso ao atualizar o código-fonte apenas
 rode o aplicativo novamente. O plugin ADT fará com que o aplicativo seja reinstalado no emulador.
+
+\subsection{Sqlite3}
+
+Sendo o Sqlite o banco de dados embutido na plataforma Android, nada melhor do que aprendermos um pouco
+sobre ele.
+
+O Sqlite é um banco de dados relacional bastante utilizado por dispositivos e sistemas embarcados por
+ser leve, robusto, de fácil configuração e, acima de tudo, livre. Para a instalação, abra um terminal
+como \texttt{root} e:
+
+\begin{flushleft}
+\texttt{\$ sudo su \\
+\# apt-get install sqlite3 \\}
+\end{flushleft}
+
+Após a instalação é possível utilizar o Sqlite via linha de comando. Faça \textit{logoff} do usuário
+\texttt{root} e faça os seguintes testes:
+
+\begin{flushleft}
+\texttt{\# exit \\
+\$ sqlite \\
+SQLite version 2.8.17\\
+Enter ".help" for instructions\\
+sqlite>\\}
+\end{flushleft}
+
+Você deverá ver algo parecido. Para sair utilize o comando \texttt{.exit}. Veja outros detalhes na página
+oficial do projeto: \url{http://www.sqlite.org/}.
+
+\subsubsection{Tipos de dados}
+
+Utilize a tabela abaixo para criar suas tabelas futuramente.
+
+\begin{table}[H]
+\begin{tabularx}{400pt}{lX}
+\hline
+\textbf{Nome} & \textbf{Descrição} \\
+\hline
+\texttt{INTEGER} & valores inteiros, positivos ou negativos. Podem variar de 1 a 8 \textit{bytes}.\\
+\texttt{REAL} & valores reais ou decimais.\\
+\texttt{TEXT} & usado para armazenar valores, não-limitado. Suporta várias codificações, por exemplo \texttt{UTF-8}.\\
+\texttt{BLOB} & objetos binários tais como imagens, arquivos de texto, etc. Também possui tamanho não-limitado.\\
+\texttt{NULL} & representa falta de informação.\\
+\hline
+\end{tabularx}
+\caption{Tipos de dados do Sqlite}
+\end{table}
+
+\subsection{Sqliteman}
+
+Para uma gerência mais produtiva usaremos o Sqliteman para acessar e modificar bancos de dados. A instalação
+é feita via linha de comando. Abra um terminal e:
+
+\begin{flushleft}
+\texttt{\$ sudo su\\
+\# apt-get install sqliteman\\}
+\end{flushleft}
+
+Depois de instalado, acesse o aplicativo do menu principal do Ubuntu em \texttt{Aplicativos $\rightarrow$
+Escritório $\rightarrow$ Sqliteman}. Faça alguns testes criando bancos de dados, depois crie algumas tabelas.
+Ele possui assistentes que irão auxiliar nos primeiros momentos.
+
+Por exemplo, crie uma base de dados e depois clique com o botão direito do \textit{mouse} em \texttt{Tables}.
+Utilize o assistente e veja como é simples criar tabelas no sqlite.
+
+% exemplo_bd.sql
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ sql }{ source/exemplo-bd-1.sql }
+  \caption{Exemplo de banco de dados [exemplo-bd.sql]}
+\end{listing}
+
+Observe que podemos fazer auto-relacionamento na tabela. Assim somos capazes de executar a seguinte SQL,
+contando o número de distros que derivam de uma outra original. Veja:
+
+% exemplo_bd.sql
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ sql }{ source/exemplo-bd-2.sql }
+  \caption{Exemplo de \textit{query} com \textit{subquery} [exemplo-bd.sql]}
+\end{listing}
+
+Mais informações em: \url{http://sqliteman.com/}

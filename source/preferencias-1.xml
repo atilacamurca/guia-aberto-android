@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListPreference
+     android:summary="Selecione o grupo padrão"
+     android:dialogTitle="Escolha um Grupo"
+     android:entries="@array/array_grupos"
+     android:entryValues="@array/index_array_grupos"
+     android:key="lista_grupos"
+     android:title="Grupos"/>
+</PreferenceScreen>

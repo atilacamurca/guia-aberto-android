@@ -1,4 +1,4 @@
-package app.contatos;
+package contatos.app.model;
 
 public class Contato {
    private String nome, fone, email;

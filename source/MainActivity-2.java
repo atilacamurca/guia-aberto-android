@@ -6,7 +6,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
 
 @Override
 public boolean onOptionsItemSelected(MenuItem item) {
-   if (item.getItemId() == R.id.add) {
+   if (item.getItemId() == R.id.menu_add) {
       irParaSalvar();
       return true;
    }

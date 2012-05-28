@@ -22,14 +22,14 @@ public void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
 
       public void onClick(View view) {
-         Contato contato = new Contato();
-         contato.setNome(etNome.getText().toString());
-         contato.setFone(etFone.getText().toString());
-         contato.setEmail(etEmail.getText().toString());
+         ContentValues values = new ContentValues();
+			values.put("nome", etNome.getText().toString());
+			values.put("telefone", etTefone.getText().toString());
+			values.put("email", etEmail.getText().toString());
          if (contatoId == null) {
-            helper.criar(contato);
+            helper.criar(values);
          } else {
-            helper.atualizar(contatoId, contato);
+            helper.atualizar(contatoId, values);
          }
          finish();
       }

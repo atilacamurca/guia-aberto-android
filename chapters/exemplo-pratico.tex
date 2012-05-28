@@ -25,6 +25,8 @@ a criação do projeto, inicialmente este arquivo deverá conter o seguinte cont
 \subsection{Activity}
 
 Não existe método \inlinecode{main} visível ao programador no Android. Ao invés disso temos \texttt{Activity}'s.
+Para que o Android saiba qual ele deve iniciar primeiro utilizamos um \texttt{intent-filter} como visto
+no trecho de código acima da linha \circled{09} a \circled{12}.
 Para nossa primeira \texttt{Activity} criaremos uma lista de contatos e um menu para criação de novo contato.
 
 Para construir o layout inicial de nossa aplicação precisamos editar o arquivo \texttt{main.xml} localizado em
@@ -62,9 +64,7 @@ Observe que o ícone utilizado no menu vem junto com o SDK do Android. Você pod
 cada um dos ícones. O Android recomenda a seguinte convenção:
 
 \begin{table}[H]
-
 \begin{tabularx}{440pt}{lXX}
-
 \hline
 \textbf{Tipo de Recurso} & \textbf{Prefixo} & \textbf{Exemplo} \\
 \hline
@@ -91,7 +91,7 @@ sendo nosso \texttt{main.xml}. Para isso adicione o \textit{layout} \textbf{main
   \caption{Definir layout [MainActivity.java]}
 \end{listing}
 
-\paragraph{Cuidado:} no ambiente Android temos uma classe chamada \texttt{R}. Ela existe tanto
+\paragraph{Cuidado:\label{par:r}} no ambiente Android temos uma classe chamada \texttt{R}. Ela existe tanto
 na biblioteca do Android como em cada projeto. Nesse caso faça o \textit{import} da classe
 \texttt{contatos.app.R}. A classe \texttt{android.R} é utilizada em outras situações, onde códigos
 pré-prontos foram disponibilizados pela equipe do Android.
@@ -126,8 +126,11 @@ ou ainda \texttt{*} que fará com que todas as células tenham o mesmo tamanho.
   \caption{Formulário principal [res/layout/salvar.xml]}
 \end{listing}
 
-Crie uma nova \texttt{Activity} chamada \texttt{SalvarActivity}. Aproveite para implementar o método
-\inlinecode{irParaSalvar} da classe \texttt{MainActivity} da seguinte maneira:
+Crie uma nova \texttt{Activity} chamada \texttt{SalvarActivity} dentro de \texttt{contatos.app.view}.
+Para irmos de uma \texttt{Activity} para outra precisamos de um \texttt{Intent}. Um de seus construtores recebe
+como parâmetros a instância da classe em que estamos, sendo que ela deve implementar a interface \texttt{Context}
+e o nome da classe a qual deve ser mostrada. Veja como implementar o método \inlinecode{irParaSalvar}
+da classe \texttt{MainActivity}:
 
 % MainActivity.java
 \begin{listing}[H]
@@ -155,23 +158,15 @@ conteúdo abaixo entre as \textit{tags} \texttt{application}:
 
 Utilize sempre o ADT e apenas confira se o arquivo está da maneira correta.
 
-\subsection{Construindo o Model da aplicação}
+\subsection{Construindo o Model da aplicação\label{ssec:model}}
 
-Criaremos nosso modelo da seguinte maneira:
-
-% @deprecated Contato.java
-\begin{listing}[H]
-  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/Contato-1.java }
-  \caption{Model da aplicação [Contato.java]}
-\end{listing}
-
-Agora precisamos de um \textit{helper}. Ela nos ajudará a acessar o banco de dados. O Android provê suporte
+Precisamos de um \textit{helper} para fazer acesso ao banco de dados. O Android provê suporte
 a bancos de dados Sqlite por padrão. Qualquer banco de dados que você criar será acessível pelo nome
 por qualquer classe na sua aplicação, mas não fora dela.
 
-Crie uma classe chamada \texttt{ContatoHelper} que extende de \texttt{SQLiteOpenHelper}. Essa classe será
-capaz de ler e escrever no banco de dados graças aos métodos \inlinecode{getReadableDatabase()} e
-\inlinecode{getWritableDatabase()}, respectivamente.
+Crie uma classe chamada \texttt{ContatoHelper} em \texttt{contatos.app.model} que extende de
+\texttt{SQLiteOpenHelper}. Essa classe será capaz de ler e escrever no banco de dados graças aos métodos 
+\inlinecode{getReadableDatabase()} e \inlinecode{getWritableDatabase()}, respectivamente.
 
 A princípio temos que criar um construtor passando como parâmetros o nome do banco de dados e a versão
 da \gls{ddl}. Logo em seguida precisamos implementar os métodos \inlinecode{onCreate}, no qual iremos
@@ -205,7 +200,7 @@ da classe\\ \texttt{android.view.View.OnClickListener}). Vamos ao código:
 
 Com essa implementação já é possível salvar contatos na base de dados.
 
-\subsection{Mostrando os dados na View}
+\subsection{Mostrando os dados na View\label{ssec:listview}}
 
 Após salvar os dados no banco, devemos ser capazes de obter tais informações e colocá-las em forma
 de Lista. Para isso criaremos um novo \textit{layout} que será responsável por representar uma linha

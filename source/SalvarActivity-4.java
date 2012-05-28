@@ -3,15 +3,15 @@ public void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
 
       public void onClick(View view) {
-         Contato contato = new Contato();
-         contato.setNome(etNome.getText().toString());
-         contato.setFone(etFone.getText().toString());
-         contato.setEmail(etEmail.getText().toString());
-         if (validar(contato)) {
+         ContentValues values = new ContentValues();
+			values.put("nome", etNome.getText().toString());
+			values.put("telefone", etTefone.getText().toString());
+			values.put("email", etEmail.getText().toString());
+         if (validar(values)) {
 				if (contatoId == null) {
-					helper.criar(contato);
+					helper.criar(values);
 				} else {
-					helper.atualizar(contatoId, contato);
+					helper.atualizar(contatoId, values);
 				}
 				finish();
 			}
@@ -19,13 +19,13 @@ public void ir() {
    });
 }
 
-public boolean validar(Contato contato) {
-	if (!Patterns.PHONE.matcher(contato.getTelefone()).matches()) {
+public boolean validar(ContentValues values) {
+	if (!Patterns.PHONE.matcher(values.getAsString("telefone")).matches()) {
 		exibirMensagem("Telefone não é válido.");
 		return false;
 	}
 	
-	if (!Patterns.EMAIL_ADDRESS.matcher(contato.getEmail()).matches()) {
+	if (!Patterns.EMAIL_ADDRESS.matcher(values.getAsString("email")).matches()) {
 		exibirMensagem("E-mail não é válido.");
 		return false;
 	}

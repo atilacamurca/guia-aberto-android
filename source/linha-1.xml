@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="fill_parent"
-   android:layout_height="wrap_content"
+   android:layout_width="fill_parent" android:layout_height="wrap_content"
    android:orientation="horizontal">
    <ImageView
-      android:id="@+id/linha_icone"
-      android:layout_width="wrap_content"
+      android:id="@+id/linha_icone" android:layout_width="wrap_content"
       android:layout_height="fill_parent">
    </ImageView>
    <LinearLayout
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
       android:orientation="vertical">
       <TextView
-         android:id="@+id/linha_nome"
-         android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:textStyle="bold"
+         android:id="@+id/linha_nome" android:layout_width="fill_parent"
+         android:layout_height="wrap_content" android:textStyle="bold"
          android:ellipsize="end"></TextView>   
       <TextView
-         android:id="@+id/linha_fone"
-         android:layout_width="fill_parent"
+         android:id="@+id/linha_fone" android:layout_width="fill_parent"
          android:layout_height="wrap_content"></TextView>
       <TextView
-         android:id="@+id/linha_email"
-         android:layout_width="fill_parent"
+         android:id="@+id/linha_email" android:layout_width="fill_parent"
          android:layout_height="wrap_content"></TextView>
       </LinearLayout>
 </LinearLayout>
