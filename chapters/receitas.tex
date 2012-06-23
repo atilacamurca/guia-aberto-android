@@ -400,3 +400,159 @@ um novo contato. Assim, em \texttt{SalvarActivity} adicione o trecho:
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/SalvarActivity-7.java }
   \caption{Obtem o valor padrão definido nas Preferências [SalvarActivity.java]}
 \end{listing}
+
+\section{Grupo de Contatos usando Grid}
+
+Uma das coisas mais legais quando falamos de aparelhos móveis é a ideia da visão da lista de aplicativos
+usada comumente, com o ícone e o texto logo abaixo. Essa ideia pode ser facilmente implementada em
+um aplicativo Android usando \texttt{GridView}.
+
+Nessa implementação vamos criar uma tela que mostra os grupos de contatos em forma de \textit{Grid}
+e ao clicar levaremos o usuário a lista de contatos mostrando apenas aqueles contatos do determinado
+grupo.
+
+\subsection{Layout usando GridView}
+
+Para começar criaremos um \textit{layout} em \texttt{res/layout} chamado \texttt{grupos\b{ }item.xml}.
+Ele irá conter a imagem e o texto que serão exibidos no \texttt{GridView}. Faça como mostra o trecho abaixo:
+
+% res/layout/grupos_item.xml
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/grupos_item-1.xml }
+  \caption{Item do Layout de Grupos [res/layout/grupos\b{ }item.xml]}
+\end{listing}
+
+Hora de criar o \texttt{GridView}. Para isso crie um novo \textit{layout} em \texttt{res/layout} chamado
+\texttt{grupos.xml}. Adicione apenas um \texttt{GridView} como mostra o trecho de código abaixo:
+
+% res/layout/grupos.xml
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/grupos-1.xml }
+  \caption{Layout de Grupos [res/layout/grupos.xml]}
+\end{listing}
+
+\paragraph{Dica:} a ferramenta ADT provê uma forma de pré-visualizar seu \textit{layout}. Note que
+na linha \circled{12} temos um comentário e nele temos a referência ao \textit{layout}
+\texttt{grupos\b{ }item}. Para isso apenas clique com botão direito do \textit{mouse} na \texttt{GridView}
+e na opção \texttt{Preview Grid Content $\rightarrow$ Choose Layout...} selecione \texttt{grupos\b{ }item}.
+
+\subsection{Activity para visualizar os Grupos}
+
+Como é de se imaginar temos que criar uma \texttt{Activity} para visualizar os Grupos.
+
+% GruposActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/GruposActivity-1.java }
+  \caption{Activity para visualizar Grupos [GruposActivity.java]}
+\end{listing}
+
+Temos que criar duas classes internas para nos ajudar a criar cada item do grupo de contatos.
+Para isso usaremos a classe abstrata \texttt{BaseAdapter}.
+
+% GruposActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/GruposActivity-2.java }
+  \caption{Adapter responsável por cada item do Grid [GruposActivity.java]}
+\end{listing}
+
+Chegou a hora de você usar a ferramenta Inkscape e criar alguns ícones. Para os exemplos a seguir
+você deve criar um ícone para cada item do grupo, sendo eles:
+
+\begin{itemize}
+	\item amigos
+	\item trabalho
+	\item conhecidos
+	\item família
+\end{itemize}
+
+Para título de exemplo crie apenas ícones simples e depois tente fazer itens mais sofisticados. Em
+\url{http://developer.android.com/design/style/iconography.html} você pode ver como devem ser criados
+os ícones para seu aplicativo.
+
+\subsubsection{Criando ícones com Inkscape}
+
+Use o Inkscape para criar um novo ícone. No menu \texttt{Arquivo $\rightarrow$
+Propriedades do Desenho...} ou apenas \texttt{Shift + Ctrl + D} e altere a largura e altura
+para \texttt{512px}.
+
+Aperte \texttt{5} para centralizar a folha e crie um quadrado (\texttt{F4}) um pouco menor que a página.
+Utilize \texttt{Ctrl} para criar um quadrado perfeito. Altere a borda usando o círculo branco no canto
+superior direito do quadrado. Selecione uma cor legal.
+
+O Android possui uma paleta de cores que pode lhe ajudar inicialmente. Veja a tabela abaixo:
+
+\begin{table}[H]
+\begin{tabularx}{300pt}{Xcc}
+\hline
+\textbf{Cor} & \textbf{Tom claro} & \textbf{Tom escuro}\\
+\hline
+Azul & \texttt{\#33B5E5} & \texttt{\#0099CC}\\
+Roxo & \texttt{\#AA66CC} & \texttt{\#9933CC}\\
+Verde & \texttt{\#99CC00} & \texttt{\#669900}\\
+Laranja & \texttt{\#FFBB33} & \texttt{\#FF8800}\\
+Vermelho & \texttt{\#FF4444} & \texttt{\#CC0000}\\
+\hline
+\end{tabularx}
+\caption{Paleta de cores do Android}
+\end{table}
+
+Mais detalhes em \url{http://developer.android.com/design/style/color.html}.
+
+\bigskip
+
+Para alterar a cor clique com botão direito do \textit{mouse} no quadrado e selecione
+\texttt{Preenchimento e contorno}. Observe a entrada de texto onde aparece \texttt{RGBA}.
+Altere com os valores acima mantendo os dois últimos, pois eles são referentes a transparência.
+
+Chegou a hora de exportar seu ícone para os tamanhos sugeridos pelo Android. Basta ir no menu
+\texttt{Arquivo $\rightarrow$ Exportar Bitmap...} ou ainda \texttt{Shift + Ctrl + E}. Os tamanhos
+estão definidos na tabela abaixo:
+
+\begin{table}[H]
+\begin{tabularx}{300pt}{Xc}
+\hline
+\textbf{Local} & \textbf{Tamanho}\\
+\hline
+\texttt{res/drawable-xhdpi} & \texttt{96px}\\
+\texttt{res/drawable-hdpi} & \texttt{72px}\\
+\texttt{res/drawable-mdpi} & \texttt{48px}\\
+\texttt{res/drawable-ldpi} & \texttt{36px}\\
+\hline
+\end{tabularx}
+\caption{Paleta de cores do Android}
+\end{table}
+
+Exporte o ícone para cada um desses diretórios, crie-os caso não existam. Como temos quatro
+grupos crie quatro ícones usando cores diferentes. Siga a nomenclatura sugerida em \ref{sssec:nomeicones}
+Convenção de nomes para ícones, exemplo: \texttt{ic\b{ }launcher\b{ }grupo\b{ }amigos.png}.
+
+\subsection{Implementando o Adapter}
+
+% GruposActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/GruposActivity-3.java }
+  \caption{implementação do Adapter [GruposActivity.java]}
+\end{listing}
+
+Como visto em \ref{ssec:listview} Mostrando os dados na View, no \texttt{Adapter} podemos fazer
+\textit{cache} dos objetos e otimizar o código. Isso pode ser observado a partir da linha \circled{25}
+até a linha \circled{35}, onde um teste é realizado para ver se a linha está em \textit{cache}.
+
+\paragraph{Observação:} na linha \circled{37} existe um trecho de código que não está nada otimizado.
+No entanto usando \texttt{string-array} é a única maneira de dar certo. Isso poderia ser evitado se
+os grupos de contatos fossem retirados do banco de dados. Seguindo as instruções antes abordadas tente
+você mesmo implementar usando banco de dados. É uma ótima maneira de aprender melhor como funciona
+um aplicativo Android.
+
+\medskip
+
+Finalize adicionando o \texttt{Activity} no \texttt{AndroidManifest.xml}. Clique na aba inferior em
+\texttt{Application} e em \texttt{Application Nodes} clique em \texttt{Add}. Escolha \texttt{Activity}
+na lista de opções e no atributo \texttt{Name} clique em \texttt{Browser} e busque por
+\texttt{GruposActivity}.
+
+Para visualizar a nova \texttt{Activity} é preciso adicionar um novo item no menu principal. Reveja
+\ref{ssec:act} Activity, e implemente essa parte. Não esqueça de adiocionar uma condição no método
+\inlinecode{onOptionsItemSelected} da classe \texttt{MainActivity}.
+
+%  TODO: utilizar GruposActivity para mostrar apenas contatos de um determinado grupo.

@@ -22,7 +22,7 @@ a criação do projeto, inicialmente este arquivo deverá conter o seguinte cont
   \caption{Projeto inicial [AndroidManifest.xml]}
 \end{listing}
 
-\subsection{Activity}
+\subsection{Activity\label{ssec:act}}
 
 Não existe método \inlinecode{main} visível ao programador no Android. Ao invés disso temos \texttt{Activity}'s.
 Para que o Android saiba qual ele deve iniciar primeiro utilizamos um \texttt{intent-filter} como visto
@@ -43,8 +43,8 @@ você poder comparar e ver se não esqueceu nada. Todos os \textit{layout}'s dev
 ferramenta ADT. Você irá notar que ao abrir o \texttt{xml} uma janela de \textit{layout} aparecerá.
 Para visualizar o \texttt{xml} ou o \textit{layout} gráfico basta utilizar a aba inferior esquerda.
 
-Por fim, temos o menu. Clique com o botão direito do \textit{mouse} em seu projeto e \menuaction{New
-$\rightarrow$ Other...} ou \menuaction{Ctrl + N}. Procure por \texttt{Android XML File}. Em \texttt{Resource
+Por fim, temos o menu. Clique com o botão direito do \textit{mouse} em seu projeto e \texttt{New
+$\rightarrow$ Other...} ou \texttt{Ctrl + N}. Procure por \texttt{Android XML File}. Em \texttt{Resource
 Type} escolha a opção \texttt{Menu}. Chame-o de \texttt{main\b{ }menu.xml}.
 
 % res/menu/main_menu.xml
@@ -55,7 +55,7 @@ Type} escolha a opção \texttt{Menu}. Chame-o de \texttt{main\b{ }menu.xml}.
 
 Pronto, já temos nosso layout. Compile o projeto e vamos a próxima iteração.
 
-\subsubsection{Convenção de nomes para ícones}
+\subsubsection{Convenção de nomes para ícones\label{sssec:nomeicones}}
 
 Observe que o ícone utilizado no menu vem junto com o SDK do Android. Você pode visualizar os
 ícones em \texttt{SDK\b{ }INSTALL/plataforms/android-8/data/res/drawable-hdpi}
@@ -272,8 +272,8 @@ Para isso precisamos passar um parâmetro para o \texttt{Activity}. Usaremos ent
 
 Para uma passagem de parâmetros segura devemos usar um \textit{namespace} para que não colida com
 nenhum nome já utilizado pelo Android. Para isso criaremos uma variável estática do tipo \texttt{String}.
-Isso acontecerá quando o usuário segurar a linha que ele deseja editar. Podemos fazer isso utilizando
-a interface \texttt{OnItemLongClickListener}.
+Isso acontecerá quando o usuário pressionar a linha que ele deseja editar. Podemos fazer isso utilizando
+a interface \texttt{OnItemClickListener}.
 
 Vamos incrementar também o método \inlinecode{irParaSalvar} passando o parâmetro caso haja um. Vamos ao
 código:

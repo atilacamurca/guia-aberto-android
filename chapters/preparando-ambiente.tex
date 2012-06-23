@@ -8,19 +8,21 @@ Para esta apostila serão utilizados os seguintes aplicativos e bibliotecas:
 
 % -- TODO: procurar como configurar o mesmo bullet pra todos os itens
 \begin{itemize}
-\item Ubuntu 10.04
-\item Java JDK 6
-\item Android SDK
-\item Android 2.2 API 8
-\item Eclipse Indigo
-\item ADT Plugin
-\item Sqlite3
-\item Sqliteman
+	\item Ubuntu 10.04 ou 12.04
+	\item Java JDK 6
+	\item Android SDK
+	\item Android 2.2 API 8
+	\item Eclipse Indigo
+	\item ADT Plugin
+	\item Sqlite3
+	\item Sqliteman
+	\item Inkscape
 \end{itemize}
 
-Você pode estar se perguntando: "Por que utilizar essa configuração?". Bom, para começar
+Você pode estar se perguntando: ''Por que utilizar essa configuração?''. Bom, para começar
 um ambiente de desenvolvimento precisa ser estável, e para isso nada melhor que o
-\url{http://releases.ubuntu.com/lucid/} (Ubuntu 10.04).
+\url{http://releases.ubuntu.com/lucid/} (Ubuntu 10.04) ou ainda o \url{http://releases.ubuntu.com/precise/}
+(Ubuntu 12.04) por serem \gls{lts}.
 
 A \gls{ide} Eclipse funciona independente do sistema operacional, então podemos utilizar a versão
 mais recente. O mesmo para o plugin \gls{adt}.
@@ -31,8 +33,12 @@ Usaremos especificamente para os exemplos a seguir a versão 2.2 do Android. Ess
 
 \section{Instalação}
 
-Toda a instalação será baseada no Ubuntu 10.04. Isso quer dizer que alguns passos podem ou não
-funcionar em outras distribuições. Nada que uma busca na internet não possa lhe ajudar.
+A instalação do Java JDK 6 no Ubuntu 10.04 não é a mesma que no Ubuntu 12.04. Isso porque ná época
+de lanaçamento do \gls{lucid}, 2010, a empresa que desenvolvia o Java era a Sun Microsystems, que
+tinha um canal nos repositórios do Ubuntu como parceira (\textit{partner}). Ainda em 2010 a empresa
+Oracle comprou a Sun junto com seu software e hardware. Nesse ponto o canal de parceria foi desligado.
+
+Discussões a parte, vamos ver as duas maneiras de instalar o Java.
 
 \subsection{Java JDK 6}
 
@@ -51,9 +57,45 @@ No campo de \texttt{Pesquisa rápida} digite: \texttt{sun-java6}. Clique com bot
 \texttt{sun-java6-jdk} e selecione a opção \texttt{Marcar para instalação}. Depois basta \texttt{Aplicar}
 as mudanças. Para isso clique em \texttt{Editar $\rightarrow$ Aplicar as alterações marcadas} ou \texttt{Ctrl + P}.
 
+\bigskip
+
+Para a instalação no Ubuntu 12.04 temos que habilitar um repositório de terceiros, também conhecido como
+\gls{ppa} (Personal Package Archives). Abra um terminal e execute os passos a seguir para adicionar um
+repositório e instalar o Java:
+
+\begin{flushleft}\texttt{\$ sudo su\\
+\# apt-add-repository ppa:flexiondotorg/java\\
+\# apt-get update\\
+\# apt-get install sun-java6-jdk\\}
+\end{flushleft}
+
+\subsubsection{Um pouco de Linux}
+
+Para quem não está familiarizado com o ambiente Linux vamos a uma pequena explicação. Nos comandos
+acima aparecem dois caracteres que não devem ser escritos mas que representam algo importante no âmbito
+dos comandos, são eles \texttt{\$} e \texttt{\#}. Estes caracteres indicam qual o nível do usuário;
+\texttt{\$} significa usuário comum, \texttt{\#} representa super usuário (\texttt{root}). No comando
+\texttt{sudo su} é onde trocamos de usuário comum para super usuário. Neste momento você terá que entrar
+com sua senha de \textit{login}.
+
+\subsubsection{Java JDK 7}
+
 Segundo a página de Requerimentos do Sistema (\url{http://developer.android.com/sdk/requirements.html})
 do site oficial do Android, é necessário uso do Java 6. Caso você queira utilizar o Java 7, você
 terá que configurar seu projeto Android para ser compilado com suporte a versão 6.
+
+A instalação no Ubuntu 12.04 pode ser feita da seguinte maneira:
+
+\begin{flushleft}\texttt{\$ sudo su\\
+\# add-apt-repository ppa:webupd8team/java\\
+\# apt-get update\\
+\# apt-get install oracle-jdk7-installer\\}
+\end{flushleft}
+
+Após criar o projeto clique com botão direito do \textit{mouse} em seu projeto e selecione
+\texttt{Properties}. Na lista de itens do lado esquerdo selecione \texttt{Java Compiler}. Daí basta clicar
+em \texttt{Enable project specific settings} e logo abaixo escolher o nível de compilação em
+\texttt{Compiler compliance level} escolha \texttt{1.6}.
 
 \subsection{Android SDK \label{ssec:sdk}}
 
@@ -81,14 +123,7 @@ Se você baixou o SDK para seu diretório \textit{Downloads}, proceda da seguint
 
 \paragraph{Obs.:} troque \texttt{usuario} na primeira linha pelo seu \textit{login} do sistema.
 
-\subsubsection{Um pouco de Linux}
-
-Para quem não está familiarizado com o ambiente Linux vamos a uma pequena explicação. Nos comandos
-acima aparecem dois caracteres que não devem ser escritos mas que representam algo importante no âmbito
-dos comandos, são eles \texttt{\$} e \texttt{\#}. Estes caracteres indicam qual o nível do usuário;
-\texttt{\$} significa usuário comum, \texttt{\#} representa super usuário (\texttt{root}). No comando
-\texttt{sudo su} é onde trocamos de usuário comum para super usuário. Neste momento você terá que entrar
-com sua senha de \textit{login}.
+\subsubsection{O poder do Linux}
 
 Dê atenção ao uso do comando \texttt{ln}. Ele é responsável por criar \textit{links} simbólicos. Isso é
 muito útil quando se instala um aplicativo ou biblioteca, pois proporciona atualização sem que
@@ -128,9 +163,16 @@ caso você tenha que testar seu código em outras versões você poderá saber q
 exemplo use \texttt{android-2.2}. Em \texttt{Target} escolha a versão, neste caso
 \texttt{Android 2.2 - API Level 8}. Pronto, apenas clique em \texttt{Create AVD}.
 
-Em relação as outras opções esteja a vontade para modificá-las. Provavelmente uma delas você terá que
-modificar, a \texttt{Skin}. Ele indica qual a resolução da tela do aparelho. Como não é possível
+\subsubsection{Dicas}
+
+A opção \texttt{Skin} indica qual a resolução da tela do aparelho. Como não é possível
 redimensionar a janela, em alguns monitores a janela fica maior que a tela do seu monitor.
+
+A opção \texttt{Snapshot} quando habilitada, serve para salvar o estado do emulador. Isso faz
+com que da segunda inicialização em diante se torne mais rápida.
+
+A opção \texttt{SD Card} é ideal caso sua aplicação necessite guardar dados como fotos, arquivos.
+O AVD irá reservar um espaço em seu HD permitindo assim o acesso a dados pelo emulador.
 
 \subsection{Eclipse Indigo}
 
@@ -194,9 +236,23 @@ Após isso clique com botão direito do \textit{mouse} no projeto recem criado, 
 Android Application}. Se tudo tiver dado certo é possível ver no emulador sua primeira aplicação
 rodando.
 
-\paragraph{Dica:} uma vez que você abriu o emulador não o feche. Você irá notar que ao abrir
+\subsubsection{Dicas}
+
+Uma vez que você abriu o emulador não o feche. Você irá notar que ao abrir
 pela primeira vez ele leva um tempo para isso. Neste caso ao atualizar o código-fonte apenas
 rode o aplicativo novamente. O plugin ADT fará com que o aplicativo seja reinstalado no emulador.
+
+Faça o teste com alguns atalhos básicos:
+\begin{description}
+	\item[Alt + Enter] Maximiza o emulador. Ideal para demostrações.
+	\item[Ctrl + F11] Muda a orientação do emulador, retrato ou paisagem.
+	\item[F8] Liga/desliga a rede.
+\end{description}
+
+Outro elemento essencial é o \texttt{LogCat}. Ele faz parte do ADT e é responsável por mostrar
+as mensagens de \textit{log} do emulador. Caso você encontre problemas com seu código o \texttt{LogCat}
+será seu melhor aliado. Para acessá-lo no Eclipse clique no menu \texttt{Window $\rightarrow$ Show View
+$\rightarrow$ Other...}, clique em \texttt{Android $\rightarrow$ LogCat}.
 
 \subsection{Sqlite3}
 
@@ -278,3 +334,19 @@ contando o número de distros que derivam de uma outra original. Veja:
 \end{listing}
 
 Mais informações em: \url{http://sqliteman.com/}
+
+\subsection{Inkscape}
+
+Uma ótima ferramenta de desenho vetorial é o Inkscape. Ela será bastante útil pois o desenvolvimento
+de aplicativos hoje em dia é baseado muito em figuras para facilitar a navegação, identidade visual,
+entre outras coisas.
+
+A instalação é feita de forma simples. Num terminal:
+
+\begin{flushleft}
+\texttt{\$ sudo su\\
+\# apt-get install inkscape\\}
+\end{flushleft}
+
+Para dicas de como criar ícones para os diversos elementos do Android veja a página
+\url{http://developer.android.com/design/style/iconography.html}.
