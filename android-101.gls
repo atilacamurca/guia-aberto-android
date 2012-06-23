@@ -1,0 +1,50 @@
+\begin{theglossary}\glogroupA
+
+\gloitem {\glosslabel{glo:ADT}{ADT}}Android Development Tools (Ferramentas de Desenvolvimento Android)\relax
+\glodelim 
+		\glsnumformat{9}\delimT 
+
+\gloitem {\glosslabel{glo:API}{API}}Application Programming Interface (Interface de Programação de Aplicativos)\relax
+\glodelim 
+		\glsnumformat{9}\delimT 
+
+\gloitem {\glosslabel{glo:AVD}{AVD}}Android Virtual Device\relax
+\glodelim 
+		\glsnumformat{11}\delimT \gloskip \glogroupD
+
+\gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas.\relax
+\glodelim 
+		\glsnumformat{22}\delimN \glsnumformat{43}\delimT 
+
+\gloitem {\glosslabel{glo:debug}{debug}}termo utilizado para indicar quais as operações que estão sendo executadas, verificando assim se estão funcionando como deveria ou se existem defeitos.\relax
+\glodelim 
+		\glsnumformat{44}\delimT \gloskip \glogroupI
+
+\gloitem {\glosslabel{glo:IDE}{IDE}}Integrated Development Environment (Ambiente de Desenvolvimento Integrado), são softwares que auxiliam no desenvolvimento de outros softwares. Ex. NetBeans IDE \url {http://netbeans.org/}, Eclipse IDE \url {http://www.eclipse.org/}\relax
+\glodelim 
+		\glsnumformat{9}\delimT \gloskip \glogroupJ
+
+\gloitem {\glosslabel{glo:JDK}{JDK}}Java Development Kit (Kit de Desenvolvimento Java). Refere-se ao Java utilizado para desenvolvimento\relax
+\glodelim 
+		\glsnumformat{10}\delimT \gloskip \glogroupL
+
+\gloitem {\glosslabel{glo:LTS}{LTS}}Long Term Support (Termo de Suporte a Longo Prazo), indica que essa versão terá atualizações por um período de tempo maior, sendo assim você terá um ambiente estável e sempre atualizado.\relax
+\glodelim 
+		\glsnumformat{9}\delimT 
+
+\gloitem {\glosslabel{glo:lucid}{lucid}}Codinome utilizado para a versão 10.04 do Ubuntu (Lucid Lynx)\relax
+\glodelim 
+		\glsnumformat{9}\delimT \gloskip \glogroupP
+
+\gloitem {\glosslabel{glo:PPA}{PPA}}Personal Package Archives (Pacote de Arquivos Pessoais), pacotes de terceiros, ou seja, que não são oriundos do repositório oficial do Ubuntu.\relax
+\glodelim 
+		\glsnumformat{10}\delimT \gloskip \glogroupS
+
+\gloitem {\glosslabel{glo:SDK}{SDK}}Software Development Kit (Kit de Desenvolvimento de Software)\relax
+\glodelim 
+		\glsnumformat{10}\delimT \gloskip \glogroupX
+
+\gloitem {\glosslabel{glo:xml}{xml}}eXtensible Markup Language, foi desenvolvida com o propósito de estruturar, armazenar e transportar informações.\relax
+\glodelim 
+		\glsnumformat{18}\delimT 
+\end{theglossary}
