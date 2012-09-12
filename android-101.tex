@@ -7,7 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{graphicx}
+\usepackage{graphicx, xcolor}
 \usepackage{array}
 \usepackage{relsize}
 
@@ -50,6 +50,16 @@
 \newcommand{\degree}{\ensuremath{^\circ}}
 
 \definecolor{purple-code}{RGB}{92,53,102}
+\definecolor{android-blue}{RGB}{51,181,229}
+\definecolor{android-dark-blue}{RGB}{0,153,204}
+\definecolor{android-purple}{RGB}{170,102,204}
+\definecolor{android-dark-purple}{RGB}{153,51,204}
+\definecolor{android-green}{RGB}{153,204,0}
+\definecolor{android-dark-green}{RGB}{102,153,0}
+\definecolor{android-orange}{RGB}{255,187,51}
+\definecolor{android-dark-orange}{RGB}{255,136,0}
+\definecolor{android-red}{RGB}{255,68,68}
+\definecolor{android-dark-red}{RGB}{204,0,0}
 
 \newcommand{\inlinecode}[1]{
  {\bfseries\ttfamily\textcolor[RGB]{92,53,102}{#1}}}
@@ -97,7 +107,42 @@ pacotes de terceiros, ou seja, que não são oriundos do repositório oficial do
 
 \begin{document}
 
-\maketitle
+% -- title page
+
+\pagebreak
+\thispagestyle{empty}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{img/guia-aberto-android-front.png}
+\end{figure}
+
+\begin{flushright}
+%{\huge O Guia Aberto de}
+%
+%\vspace{0.2in}
+%
+%{\Huge \textcolor{android-dark-green}{\textbf{ANDROID}}}
+%
+%\vspace{0.4in}
+
+{\huge
+por Átila Camurça
+}
+
+\vspace{1in}
+
+{\Large 2ª Edição}
+
+\vspace{0.2in}
+
+{\small \today}
+
+\vfill
+\end{flushright}
+
+\clearpage
+
 \tableofcontents
 \listoflistings
 \listoftables

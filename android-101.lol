@@ -46,3 +46,6 @@
 \contentsline {listing}{\numberline {46}{\ignorespaces Activity para visualizar Grupos [GruposActivity.java]}}{54}{listing.46}
 \contentsline {listing}{\numberline {47}{\ignorespaces Adapter respons\IeC {\'a}vel por cada item do Grid [GruposActivity.java]}}{55}{listing.47}
 \contentsline {listing}{\numberline {48}{\ignorespaces implementa\IeC {\c c}\IeC {\~a}o do Adapter [GruposActivity.java]}}{57}{listing.48}
+\contentsline {listing}{\numberline {49}{\ignorespaces M\IeC {\'e}todo listar com par\IeC {\^a}metro grupo [ContatoHelper.java]}}{58}{listing.49}
+\contentsline {listing}{\numberline {50}{\ignorespaces Evento de clique em um item do \textit {grid} [GruposActivity.java]}}{59}{listing.50}
+\contentsline {listing}{\numberline {51}{\ignorespaces Captura de par\IeC {\^a}metro vindo de \texttt {GruposActivity} [MainActivity.java]}}{59}{listing.51}

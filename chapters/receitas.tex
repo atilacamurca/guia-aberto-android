@@ -179,6 +179,8 @@ Ele servirá para implementarmos o trecho que realiza a chamada. Vamos a ele:
   \caption{Item chamar no diálogo [MainActivity.java]}
 \end{listing}
 
+\newpage
+
 \subsection{Enviando e-mail}
 
 Para envio de e-mail você pode simplesmente usar a aplicação de e-mail padrão do aparelho.
@@ -404,7 +406,7 @@ um novo contato. Assim, em \texttt{SalvarActivity} adicione o trecho:
 \section{Grupo de Contatos usando Grid}
 
 Uma das coisas mais legais quando falamos de aparelhos móveis é a ideia da visão da lista de aplicativos
-usada comumente, com o ícone e o texto logo abaixo. Essa ideia pode ser facilmente implementada em
+usada comumente com o ícone e o texto logo abaixo. Essa ideia pode ser facilmente implementada em
 um aplicativo Android usando \texttt{GridView}.
 
 Nessa implementação vamos criar uma tela que mostra os grupos de contatos em forma de \textit{Grid}
@@ -482,15 +484,20 @@ superior direito do quadrado. Selecione uma cor legal.
 O Android possui uma paleta de cores que pode lhe ajudar inicialmente. Veja a tabela abaixo:
 
 \begin{table}[H]
-\begin{tabularx}{300pt}{Xcc}
+\begin{tabularx}{310pt}{Xcc}
 \hline
 \textbf{Cor} & \textbf{Tom claro} & \textbf{Tom escuro}\\
 \hline
-Azul & \texttt{\#33B5E5} & \texttt{\#0099CC}\\
-Roxo & \texttt{\#AA66CC} & \texttt{\#9933CC}\\
-Verde & \texttt{\#99CC00} & \texttt{\#669900}\\
-Laranja & \texttt{\#FFBB33} & \texttt{\#FF8800}\\
-Vermelho & \texttt{\#FF4444} & \texttt{\#CC0000}\\
+Azul & \texttt{\#33B5E5} \fcolorbox{black}{android-blue}{\textcolor{android-blue}{TTT}}
+		& \texttt{\#0099CC} \fcolorbox{black}{android-dark-blue}{\textcolor{android-dark-blue}{TTT}}\\
+Roxo & \texttt{\#AA66CC} \fcolorbox{black}{android-purple}{\textcolor{android-purple}{TTT}}
+		& \texttt{\#9933CC} \fcolorbox{black}{android-dark-purple}{\textcolor{android-dark-purple}{TTT}}\\
+Verde & \texttt{\#99CC00} \fcolorbox{black}{android-green}{\textcolor{android-green}{TTT}}
+		& \texttt{\#669900} \fcolorbox{black}{android-dark-green}{\textcolor{android-dark-green}{TTT}}\\
+Laranja & \texttt{\#FFBB33} \fcolorbox{black}{android-orange}{\textcolor{android-orange}{TTT}}
+		& \texttt{\#FF8800} \fcolorbox{black}{android-dark-orange}{\textcolor{android-dark-orange}{TTT}}\\
+Vermelho & \texttt{\#FF4444} \fcolorbox{black}{android-red}{\textcolor{android-red}{TTT}}
+		& \texttt{\#CC0000} \fcolorbox{black}{android-dark-red}{\textcolor{android-dark-red}{TTT}}\\
 \hline
 \end{tabularx}
 \caption{Paleta de cores do Android}
@@ -552,7 +559,55 @@ na lista de opções e no atributo \texttt{Name} clique em \texttt{Browser} e bu
 \texttt{GruposActivity}.
 
 Para visualizar a nova \texttt{Activity} é preciso adicionar um novo item no menu principal. Reveja
-\ref{ssec:act} Activity, e implemente essa parte. Não esqueça de adiocionar uma condição no método
+\ref{ssec:act} Activity, e implemente essa parte. Não esqueça de adicionar uma condição no método
 \inlinecode{onOptionsItemSelected} da classe \texttt{MainActivity}.
 
 %  TODO: utilizar GruposActivity para mostrar apenas contatos de um determinado grupo.
+%  TODO: colocar screenshot da tela de grupos
+
+\subsection{Selecionando contatos de um determinado grupo}
+
+Para não deixar dúvidas quanto a implementação deste trecho vamos fazer com que ao clicar
+em um determinado grupo, somente contatos daquele grupo apareçam na lista que fica
+em \texttt{MainActivity}.
+
+Primeiro sobrescreva o método \inlinecode{listar} da classe \texttt{ContatoHelper} para que
+ele receba um parâmetro, que irá representar o grupo.
+
+% ContatoHelper.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/ContatoHelper-8.java }
+  \caption{Método listar com parâmetro grupo [ContatoHelper.java]}
+\end{listing}
+
+A implementação do clique em um item do \textit{grid} é semelhante a vista em \ref{ssec:edit}
+Editando dados existentes, onde criamos uma variável contendo o \textit{namespace} do nosso parâmetro.
+
+Copie o método \inlinecode{irPara} da classe \texttt{MainActivity}, mudando apenas o primeiro
+parâmetro de \inlinecode{intent.putExtra} para o novo \textit{namespace}, na linha \circled{17}.
+
+Por fim, inclua o método \inlinecode{configurar} em \inlinecode{onCreate}, o qual será responsável
+por configurar para onde ir ao clicar em um item do \textit{grid}.
+
+% GruposActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/GruposActivity-4.java }
+  \caption{Evento de clique em um item do \textit{grid} [GruposActivity.java]}
+\end{listing}
+
+Agora é preciso capturar o parâmetro em \texttt{MainActivity}. Para isso basta fazer como descrito abaixo:
+
+% MainActivity.java
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-14.java }
+  \caption{Captura de parâmetro vindo de \texttt{GruposActivity} [MainActivity.java]}
+\end{listing}
+
+Muito bem, eis que temos um aplicativo já bem completo. Se tudo deu certo você deve ter uma tela como
+vemos abaixo:
+
+\begin{figure}[h]
+\centering
+\includegraphics{img/screenshot-grupos.png}
+\caption{Tela de Grupos}
+\end{figure}
