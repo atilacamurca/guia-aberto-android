@@ -11,11 +11,11 @@ public boolean onOptionsItemSelected(MenuItem item) {
 	return super.onOptionsItemSelected(item);
 }
  
-public void irPara(Class<?> clazz) {
+private void irPara(Class<?> clazz) {
 	irPara(clazz, null);
 }
 
-public void irPara(Class<?> clazz, String id) {
+private void irPara(Class<?> clazz, String id) {
  	Intent intent = new Intent(MainActivity.this, clazz);
  	if (id != null) {
  		intent.putExtra(_ID, id);

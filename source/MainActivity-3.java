@@ -1,4 +1,4 @@
-public void irParaSalvar() {
+private void irParaSalvar() {
    Intent intent = new Intent(MainActivity.this, SaveActivity.class);
    startActivity(intent);
 }

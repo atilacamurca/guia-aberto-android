@@ -11,12 +11,12 @@ public void onCreate(Bundle icicle) {
    /* ... */
 }
 
-public void carregar() {
+private void carregar() {
 	/* ... */
-   btSalvar = (Button) findViewById(R.id.btSalvar);
+   btSalvar = (Button) findViewById(R.id.bt_salvar);
 }
 
-public void ir() {
+private void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
 
       public void onClick(View view) {

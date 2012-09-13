@@ -1,5 +1,5 @@
 /* ... */
-public void configurar() {
+private void configurar() {
 	/* ... */
 	listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 		public boolean onItemLongClick(AdapterView<?> parent, View view,

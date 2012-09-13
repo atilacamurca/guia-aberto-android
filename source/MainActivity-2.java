@@ -13,6 +13,6 @@ public boolean onOptionsItemSelected(MenuItem item) {
    return super.onOptionsItemSelected(item);
 }
 
-public void irParaSalvar() {
+private void irParaSalvar() {
    // não implementado ainda ...
 }

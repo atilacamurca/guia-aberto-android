@@ -11,6 +11,6 @@ public class GruposActivity extends Activity {
 	}
 	
 	private void carregar() {
-		grid = (GridView) findViewById(R.id.gridView1);
+		grid = (GridView) findViewById(R.id.gv_grupos);
 	}
 }

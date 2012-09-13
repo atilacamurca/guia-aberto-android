@@ -1,4 +1,4 @@
-public void carregar() {
+private void carregar() {
    /* ... */
    contatoId = getIntent().getStringExtra(MainActivity._ID);
 	if (contatoId != null) {

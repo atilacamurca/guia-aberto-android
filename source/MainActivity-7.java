@@ -7,11 +7,11 @@ public void onCreate(Bundle icicle) {
    configurar();
 }
 
-public void irParaSalvar() {
+private void irParaSalvar() {
 	irParaSalvar(null);
 }
 
-public void irParaSalvar(String id) {
+private void irParaSalvar(String id) {
 	Intent intent = new Intent(MainActivity.this, SalvarActivity.class);
 	if (id != null) {
 		intent.putExtra(_ID, id);
@@ -19,7 +19,7 @@ public void irParaSalvar(String id) {
 	startActivity(intent);
 }
 
-public void configurar() {
+private void configurar() {
 	listView.setOnItemClickListener(new OnItemClickListener() {
 		public void onItemClick(AdapterView<?> parent, View view,
 				int position, long id) {

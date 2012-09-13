@@ -1,6 +1,6 @@
 public class ContatoHelper extends SQLiteOpenHelper {
 	/* ... */
-	private static final int VERSAO = 2;
+	private static final int VERSION = 2;
 	private static final String TAG = "ContatoHelper";
 
 	@Override

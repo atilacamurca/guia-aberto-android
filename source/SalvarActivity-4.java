@@ -1,5 +1,5 @@
 /* ... */
-public void ir() {
+private void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
 
       public void onClick(View view) {
@@ -19,7 +19,7 @@ public void ir() {
    });
 }
 
-public boolean validar(ContentValues values) {
+private boolean validar(ContentValues values) {
 	if (!Patterns.PHONE.matcher(values.getAsString("telefone")).matches()) {
 		exibirMensagem("Telefone não é válido.");
 		return false;
@@ -32,7 +32,7 @@ public boolean validar(ContentValues values) {
 	return true;
 }
 
-public void exibirMensagem(String mensagem) {
+private void exibirMensagem(String mensagem) {
  	Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
 }
 /* ... */

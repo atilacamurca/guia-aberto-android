@@ -2,9 +2,9 @@ public class SalvarActivity extends Activity {
 	/* ... */
 	private Spinner spGrupo = null;
 
-	public void carregar() {
+	private void carregar() {
 		/* ... */
-		spGrupo = (Spinner) findViewById(R.id.spGrupo);
+		spGrupo = (Spinner) findViewById(R.id.sp_grupo);
 		ArrayAdapter<CharSequence> adapter = 
 				ArrayAdapter.createFromResource(this,
 						R.array.array_grupos, android.R.layout.simple_spinner_item);
@@ -13,12 +13,12 @@ public class SalvarActivity extends Activity {
 		/* antes de verificar o parâmetro contatoId */
 	}
 
-	public void carregarContato() {
+	private void carregarContato() {
 		spGrupo.setSelection(helper.getGrupo(c));
 		c.close();
 	}
 
-	public void ir() {
+	private void ir() {
 		btSalvar.setOnClickListener(new View.OnClickListener() {
 			/* ... */
 			contato.setGrupo(spGrupo.getSelectedItemPosition());

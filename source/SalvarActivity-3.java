@@ -1,7 +1,7 @@
 /* ... */
 private String contatoId = null;
 
-public void carregar() {
+private void carregar() {
 	/* ... */
    contatoId = getIntent().getStringExtra(MainActivity._ID);
    if (contatoId != null) {
@@ -9,7 +9,7 @@ public void carregar() {
    }
 }
 
-public void carregarContato() {
+private void carregarContato() {
    Cursor cursor = helper.ler(contatoId);
    cursor.moveToFirst();
    etNome.setText(helper.getNome(cursor));
@@ -18,7 +18,7 @@ public void carregarContato() {
    cursor.close();
 }
 
-public void ir() {
+private void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
 
       public void onClick(View view) {

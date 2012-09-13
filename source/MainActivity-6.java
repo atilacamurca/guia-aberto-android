@@ -10,8 +10,8 @@ public void onCreate(Bundle icicle) {
 	carregar();
 }
 
-public void carregar() {
-	listView = (ListView) findViewById(R.id.contatos);
+private void carregar() {
+	listView = (ListView) findViewById(R.id.lv_contatos);
 	model = helper.listar();
 	startManagingCursor(model);
 	adapter = new ContatoAdapter(model);

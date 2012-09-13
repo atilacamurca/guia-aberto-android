@@ -1,5 +1,5 @@
 /* ... */
-public void configurar() {
+private void configurar() {
 	/* ... */
 	listView.setOnItemLongClickListener(new OnItemLongClickListener() {
 		public boolean onItemLongClick(AdapterView<?> parent, View view,
@@ -32,6 +32,6 @@ public void configurar() {
 	});
 }
 
-public void exibirMensagem(String mensagem) {
+private void exibirMensagem(String mensagem) {
    Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
 }

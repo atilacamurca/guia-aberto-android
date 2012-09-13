@@ -7,7 +7,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	ir();
 }
 
-public void forceLocale(String language, String country) {
+private void forceLocale(String language, String country) {
 	Locale locale = new Locale(language, country);
 	Locale.setDefault(locale);
 	Configuration configuration = new Configuration();
