@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1024"
+   height="512"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="guia-aberto-android-front.svg"
+   inkscape:export-filename="/home/atila/Imagens/guia-aberto-android-front.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4">
+    <filter
+       inkscape:collect="always"
+       id="filter3778"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.002681"
+         id="feGaussianBlur3780" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       id="filter3829"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.3029491"
+         id="feGaussianBlur3831" />
+    </filter>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath3851">
+      <rect
+         style="fill:#669900;fill-opacity:1;stroke:none"
+         id="rect3853"
+         width="472.87936"
+         height="127.65684"
+         x="26.766756"
+         y="214.82037" />
+    </clipPath>
+    <filter
+       inkscape:collect="always"
+       id="filter3884"
+       x="-0.021106809"
+       width="1.0422136"
+       y="-0.12228705"
+       height="1.2445741"
+       color-interpolation-filters="sRGB">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="3.7735341"
+         id="feGaussianBlur3886" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7285156"
+     inkscape:cx="465.45323"
+     inkscape:cy="225.8847"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:showpageshadow="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="946"
+     inkscape:window-x="0"
+     inkscape:window-y="23"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="glow"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:none;stroke:#ffffff;stroke-width:4;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3778)"
+       id="rect2993-9"
+       width="472.87936"
+       height="127.65684"
+       x="26.766756"
+       y="214.82037"
+       transform="matrix(2.0044677,0,0,2.0044677,-15.588804,-265.4119)" />
+  </g>
+  <g
+     inkscape:label="main"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-540.36218)">
+    <rect
+       style="fill:#669900;fill-opacity:1;stroke:none"
+       id="rect2993"
+       width="947.8714"
+       height="255.88402"
+       x="38.064297"
+       y="705.55078" />
+    <text
+       xml:space="preserve"
+       style="font-size:80.17871094px;font-style:normal;font-variant:normal;font-weight:300;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#333333;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto Light"
+       x="214.50098"
+       y="673.90918"
+       id="text2985"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="214.50098"
+         y="673.90918">O Guia Aberto de</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:101.25050354px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;opacity:0.53872052;fill:#ffffff;fill-opacity:1;stroke:none;filter:url(#filter3884);font-family:Roboto;-inkscape-font-specification:Roboto"
+       x="47.620914"
+       y="856.5813"
+       id="text2989-4"
+       sodipodi:linespacing="125%"
+       transform="matrix(2.0044677,0,0,2.0044677,-15.588804,-808.18827)"><tspan
+         sodipodi:role="line"
+         id="tspan2991-1"
+         x="47.620914"
+         y="856.5813">ANDROID</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:201.00556946px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Roboto;-inkscape-font-specification:Roboto"
+       x="81.246254"
+       y="907.63403"
+       id="text2989"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2991"
+         x="81.246254"
+         y="907.63403">ANDROID</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="sunken"
+     sodipodi:insensitive="true">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;filter:url(#filter3829)"
+       id="rect2993-2"
+       width="472.87936"
+       height="127.65684"
+       x="26.766756"
+       y="214.82037"
+       clip-path="url(#clipPath3851)"
+       transform="matrix(2.0044677,0,0,2.0044677,-15.588804,-265.4119)" />
+  </g>
+</svg>
