@@ -21,5 +21,6 @@ private void carregar() {
 @Override
 protected void onDestroy() {
    super.onDestroy();
+   model.close();
    helper.close();
 }

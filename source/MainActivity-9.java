@@ -20,10 +20,10 @@ private void configurar() {
 							public void onClick(DialogInterface dialog, int which) {
 								int linhasAfetadas = helper.deletar(String.valueOf(id));
 								if (linhasAfetadas > 0) {
-									exibirMensagem("Contatos deletado com sucesso");
+									exibirMensagem("Contatos deletado com sucesso.");
 									carregar();
 								} else {
-									exibirMensagem("Falha ao deletar contato :(");
+									exibirMensagem("Falha ao deletar contato.");
 								}
 							}
 						});

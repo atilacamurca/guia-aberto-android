@@ -20,7 +20,6 @@ private void carregarContato() {
 
 private void ir() {
    btSalvar.setOnClickListener(new OnClickListener() {
-
       public void onClick(View view) {
          ContentValues values = new ContentValues();
 			values.put("nome", etNome.getText().toString());

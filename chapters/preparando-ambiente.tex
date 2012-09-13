@@ -9,10 +9,10 @@ Para esta apostila serão utilizados os seguintes aplicativos e bibliotecas:
 % -- TODO: procurar como configurar o mesmo bullet pra todos os itens
 \begin{itemize}
 	\item Ubuntu 10.04 ou 12.04
-	\item Java JDK 6
+	\item Java JDK 6 ou 7
 	\item Android SDK
 	\item Android 2.2 API 8
-	\item Eclipse Indigo
+	\item Eclipse Juno
 	\item ADT Plugin
 	\item Sqlite3
 	\item Sqliteman
@@ -33,8 +33,8 @@ Usaremos especificamente para os exemplos a seguir a versão 2.2 do Android. Ess
 
 \section{Instalação}
 
-A instalação do Java JDK 6 no Ubuntu 10.04 não é a mesma que no Ubuntu 12.04. Isso porque ná época
-de lanaçamento do \gls{lucid}, 2010, a empresa que desenvolvia o Java era a Sun Microsystems, que
+A instalação do Java JDK 6 no Ubuntu 10.04 não é a mesma que no Ubuntu 12.04. Isso porque na época
+de lançamento do \gls{lucid}, em 2010, a empresa que desenvolvia o Java era a Sun Microsystems, que
 tinha um canal nos repositórios do Ubuntu como parceira (\textit{partner}). Ainda em 2010 a empresa
 Oracle comprou a Sun junto com seu software e hardware. Nesse ponto o canal de parceria foi desligado.
 
@@ -95,7 +95,7 @@ A instalação no Ubuntu 12.04 pode ser feita da seguinte maneira:
 Após criar o projeto clique com botão direito do \textit{mouse} em seu projeto e selecione
 \texttt{Properties}. Na lista de itens do lado esquerdo selecione \texttt{Java Compiler}. Daí basta clicar
 em \texttt{Enable project specific settings} e logo abaixo escolher o nível de compilação em
-\texttt{Compiler compliance level} escolha \texttt{1.6}.
+\texttt{Compiler compliance level}, escolha \texttt{1.6}.
 
 \subsection{Android SDK \label{ssec:sdk}}
 
@@ -174,9 +174,9 @@ com que da segunda inicialização em diante se torne mais rápida.
 A opção \texttt{SD Card} é ideal caso sua aplicação necessite guardar dados como fotos, arquivos.
 O AVD irá reservar um espaço em seu HD permitindo assim o acesso a dados pelo emulador.
 
-\subsection{Eclipse Indigo}
+\subsection{Eclipse Juno}
 
-A IDE Eclipse pode ser encontrada em \url{http://www.eclipse.org/downloads/}. Para o desenvolvimento
+O IDE Eclipse pode ser encontrada em \url{http://www.eclipse.org/downloads/}. Para o desenvolvimento
 de aplicativos para o Android a versão \texttt{Eclipse IDE for Java Developers} é ideal. Mas se você
 tiver interesse em aplicativos Java para Web a opção é baixar a versão \texttt{Eclipse IDE for Java EE Developers}.
 
@@ -193,17 +193,16 @@ lhe mostrar como adicionar um item ao menu visível a todos os usuários.
 \subsection{Plugin ADT}
 
 Para a instalação do plugin ADT vamos abrir o Eclipse, e em seu menu selecione \texttt{Help $\rightarrow$
-Install New Software...}
+Eclipse Marketplace...}
 
-Depois cliquem em \texttt{Add} do lado direito superior. A janela \texttt{Add Repository} aparecerá,
-agora basta digitar \texttt{ADT Plugin} em \texttt{Name} e a \textit{url}
-\url{https://dl-ssl.google.com/android/eclipse/} em \texttt{Location}. Clique em \texttt{Ok}.
+Busque por \texttt{adt} e escolha o \texttt{Android Development Tools for Eclipse} da \texttt{Google, Inc.,
+Apache 2.0} e clique em \texttt{Install}. O Eclipse irá pedir confirmação sobre os itens a serem instalados,
+clique em \texttt{Next}. Agora basta aceitar os termos de uso e clicar em \texttt{Finish}. Após o download
+e a instalação, reinicie o Eclipse.
 
-Verifique se o campo \texttt{Work with} está apontando para o plugin ADT. Caso positivo espere até que
-o Eclipse baixe os dados referentes a instalação do mesmo. Daí, basta marcar a opção
-\texttt{Developer Tools} e clicar em \texttt{Next}. O Eclipse irá pedir confirmação sobre os itens
-a serem instalados, clique novamente em \texttt{Next}. Agora basta aceitar os termos de uso e clicar em
-\texttt{Finish}. Após o download e a instalação, reinicie o Eclipse.
+No \texttt{Eclipse Marketplace} você pode encontrar outras ferramentas bastante úteis para um bom desenvolvimento.
+Clique na aba \texttt{Popular} e veja as ferramentas mais baixadas, talvez exista uma que você não conheça
+mas que sempre precisou.
 
 \subsubsection{Configurando o ADT}
 
@@ -221,18 +220,16 @@ Caso você tenha mais dúvidas dê uma olhada na página oficial de instalação
 Para testar o \texttt{Android Development Tools} ou ADT crie um projeto Android. No menu do Eclipse selecione
 \texttt{File $\rightarrow$ New $\rightarrow$ Project...}
 
-Selecione \texttt{Android Project} e clique em \texttt{Next}. Digite o nome do seu projeto e clique em
-\texttt{Next}. Neste ponto temos que escolher qual a plataforma que nosso projeto será criado. Como foi
-decidido antes usaremos a versão 2.2 API 8. Caso você tenha baixado outras API's certifique-se de que
-a versão está correta.
+Selecione \texttt{Android Application Project} e clique em \texttt{Next}. Dê um nome qualquer ao seu aplicativo,
+por exemplo \texttt{hello.android}. Note que o ADT tenta dar um nome ao seu pacote e ao diretório de arquivos
+a partir do nome que você digitou. Deixe como está. Em \texttt{Build SDK} é preciso escolher qual API vamos
+utilizar, em nosso caso escolha a \texttt{Android 2.2 (API 8)}. Em \texttt{Minimum Required SDK} escolha
+a \texttt{API 8: Android 2.2 (Froyo)} indicando que a versão mínima é a \texttt{API 8}. Clique em \texttt{Next}.
 
-Agora precisamos dizer o nome da aplicação, ou seja, o nome que será visível ao usuário. O nome do pacote
-você pode usar a nomenclatura \texttt{nome\b{ }aplicativo.app}. Depois ele pergunta se você deseja
-criar sua primeira \texttt{Activity}, caso positivo dê um nome a ela, por exemplo \texttt{MainActivity}.
-E por último vem a versão mínima do SDK, neste caso já está configurada como \texttt{8}. Basta clicar
-em \texttt{Finish}.
+Na versão do ADT para o Eclipse Juno, uma novidade apareceu. É possível criar o ícone lançador logo ao criar
+o aplicativo. Selecione da maneira que achar melhor e clique em \texttt{Next}. Depois clique em \texttt{Finish}.
 
-Após isso clique com botão direito do \textit{mouse} no projeto recem criado, e \texttt{Run As $\rightarrow$
+Após isso clique com botão direito do \textit{mouse} no projeto recém criado, e \texttt{Run As $\rightarrow$
 Android Application}. Se tudo tiver dado certo é possível ver no emulador sua primeira aplicação
 rodando.
 

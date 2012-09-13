@@ -3,13 +3,20 @@
 
 \section{Primeira aplicação - Contatos}
 
-Crie uma nova aplicação chamada \textbf{Contatos}. Para o nome do pacote use \inlinecode{contatos.app}.
-Chame a \texttt{Activity} de \texttt{MainActivity}, que será responsável pela Atividade Principal. Depois
-configure a plataforma Android a ser utilizada e \texttt{Finish} (em caso de dúvida verifique o item
-\ref{sssec:testando} Testando o ADT).
+% Crie uma nova aplicação chamada \textbf{Contatos}. Para o nome do pacote use \inlinecode{contatos.app}.
+% Chame a \texttt{Activity} de \texttt{MainActivity}, que será responsável pela Atividade Principal. Depois
+% configure a plataforma Android a ser utilizada e \texttt{Finish} (em caso de dúvida verifique o item
+% \ref{sssec:testando} Testando o ADT).
+% 
+% Essa pode não ser uma aplicação muito útil, mas com ela poderemos aprender como funciona o Android. Você
+% só poderá criar algo se você souber utilizar as ferramentas.
+Baseado em \ref{sssec:testando} Testando o ADT, crie um novo aplicativo chamado \textbf{Contatos}. Use
+\inlinecode{contatos.app} como o nome do pacote. Crie uma \texttt{Activity} inicial chamada
+\texttt{MainActivity} e um \textit{layout} inicial chamado \texttt{main}. Depois clique em
+\texttt{Finish}.
 
-Essa pode não ser uma aplicação muito útil, mas com ela poderemos aprender como funciona o Android. Você
-só poderá criar algo se você souber utilizar as ferramentas.
+Este exemplo é bastante útil para aprendermos como funciona o Android. Você
+só poderá criar algo se você souber utilizar bem as ferramentas.
 
 \subsection{AndroidManifest.xml}
 
@@ -213,13 +220,19 @@ de nossa Lista. Essa linha deve ser semelhante a figura abaixo:
 \end{figure}
 
 Para isso crie um arquivo chamado \texttt{linha.xml} em \texttt{res/layout} com o seguinte conteúdo.
-% -- TODO: exemplificar o trecho de código.
 
 % res/layout/linha.xml
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/linha-1.xml }
   \caption{Layout para cada linha da lista [res/layout/linha.xml]}
 \end{listing}
+
+Note a possibilidade de aninhar o \texttt{LinearLayout}. Fazendo isso é possível criar o \textit{layout}
+desejado fazendo com que alguns elementos sejam inseridos na horizontal, outros na vertical.
+
+Outro ponto interessante é o uso de negrito no \texttt{TextView} correspondente ao nome, na linha \circled{14},
+e o uso de reticências caso o nome seja maior que a tela usando \texttt{android:ellipsize="end"} na linha
+\circled{15}.
 
 Agora vamos até \texttt{ContatoHelper} e adicionar o método \inlinecode{listar}. E também adicionaremos
 métodos para facilitar obter os valores de cada atributo.
@@ -229,6 +242,10 @@ métodos para facilitar obter os valores de cada atributo.
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/ContatoHelper-3.java }
   \caption{Listar contatos existentes [ContatoHelper.java]}
 \end{listing}
+
+Os elementos de um \texttt{Cursor} são numerados iniciando de 0 (zero). Neste caso o 0 é a coluna
+\texttt{\b{ }id}. No caso ela não será usado pelo programador e sim pelo Android. Isto
+será visto com mais detalhes em \ref{ssec:edit} Editando dados existentes.
 
 Para popular cada linha de nossa Lista vamos criar uma classe interna (\textit{inner class}) em
 \texttt{MainActivity}. Assim podemos fazer \textit{cache} dos objetos aumentando a performance.
