@@ -176,7 +176,7 @@ Crie uma classe chamada \texttt{ContatoHelper} em \texttt{contatos.app.model} qu
 \inlinecode{getReadableDatabase()} e \inlinecode{getWritableDatabase()}, respectivamente.
 
 A princípio temos que criar um construtor passando como parâmetros o nome do banco de dados e a versão
-da \gls{ddl}. Logo em seguida precisamos implementar os métodos \inlinecode{onCreate}, no qual iremos
+da \gls{ddl} (\textit{Data Definition Language}). Logo em seguida precisamos implementar os métodos \inlinecode{onCreate}, no qual iremos
 criar as tabelas e \inlinecode{onUpdate}, caso tenhamos que alterar alguma tabela.
 
 % ContatoHelper.java
@@ -244,7 +244,7 @@ métodos para facilitar a obtenção dos valores de cada atributo.
 \end{listing}
 
 Os elementos de um \texttt{Cursor} são numerados iniciando de 0 (zero). Neste caso o 0 é a coluna
-\texttt{\b{ }id}. No caso ela não será usado pelo programador e sim pelo Android. Isto
+\texttt{\b{ }id}. Note que ela não será usada pelo programador e sim pelo Android. Isto
 será visto com mais detalhes em \ref{ssec:edit} Editando dados existentes.
 
 Para popular cada linha de nossa Lista vamos criar uma classe interna (\textit{inner class}) em
@@ -258,7 +258,7 @@ Use o sufixo \texttt{Holder} para esse tipo de classe.
 \end{listing}
 
 Levando em conta que estamos usando a interface \texttt{Cursor} em nosso \texttt{Helper} temos
-que criar uma classe que extende de \texttt{CursorAdapter} que será responsável por definir o
+que criar uma classe que extenda de \texttt{CursorAdapter} que será responsável por definir o
 \textit{layout} de cada linha da Lista. Crie uma classe interna chamada \texttt{ContatoAdapter}.
 Iremos sobrescrever dois métodos, \inlinecode{newView()} e \inlinecode{bindView()}, que são responsáveis
 por inflar (\textit{inflate}) uma nova linha e reciclar uma linha existente, respectivamente.
