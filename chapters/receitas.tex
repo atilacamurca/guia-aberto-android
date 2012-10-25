@@ -2,7 +2,7 @@
 
 \section{Mostrando Diálogos}
 
-No Android podemos criar diálogos no \texttt{Activity} mostrando opções ao usuário, como por exemplo,
+No Android, podemos criar diálogos no \texttt{Activity} mostrando opções ao usuário, como por exemplo,
 escolher itens de uma lista, ou responder sim ou não a uma ação, etc.
 
 Vamos incrementar algumas partes de nosso código e tentar encaixar algumas funcionalidades
@@ -10,12 +10,12 @@ relacionadas.
 
 \subsection{Editar/Excluir ao clicar e segurar na ListView}
 
-Vamos implementar uma ação comum no mundo Android, que ao clicar e segurar num item
+Vamos implementar uma ação comum no mundo Android, que é a seguinte: ao clicar e segurar num item
 da \texttt{ListView}, ele mostra opções editar e excluir, por exemplo. Isto pode ser
 feito facilmente usando \texttt{AlertDialog.Builder}, uma classe com métodos pré-prontos
 para serem usados por você.
 
-Neste exemplo precisaremos editar \texttt{ContatoHelper} e adicionar um método para
+Neste exemplo, precisaremos editar \texttt{ContatoHelper} e adicionar um método para
 deletar um contato, editar nosso \texttt{MainActivity} no método \inlinecode{configurar}
 e adicionar um \textit{Listener} que ao clicar e segurar num item da \texttt{ListView}
 um método é acionado. Vamos a implementação:
@@ -36,11 +36,35 @@ Note a necessidade de um novo método em \texttt{MainActivity}, o \inlinecode{ex
 Ele é bastante útil quando se quer exibir uma mensagem rapidamente e depois ela suma.
 Para isso usamos a classe \texttt{Toast}.
 
+\subsubsection{Interface como parâmetro de um método}
+
+Você já deve ter notado o uso de \textit{interface}'s como parâmetro dos métodos, por exemplo
+na linha \circled{4} e \circled{11} do código acima. Essa prática obriga ao programador implementar
+a classe na passagem dos parâmetros.
+
+Essa ideia vem de algumas linguagens de programação que possuem funções como parâmetros. Como o Java
+não suporta essa característica, a solução veio em forma de uma \textit{interface}, a qual o programador
+é obrigado a implementar seus métodos. Com isso o método que recebe a \textit{interface} como parâmetro
+sabe exatamente o que ela tem disponível.
+
+A partir dessa observação, podemos justificar o uso da palavra reservada \inlinecode{final} em alguns
+parâmetros dos métodos acima. Isso acontece porque alguns parâmetros são utilizados dentro da implementação
+das \textit{interface}'s.
+
+Caso haja a necessidade de utilizar uma implementação em outra classe você pode criar uma classe que
+implementa uma \textit{interface}, por exemplo a \textit{interface} \texttt{OnItemLongClickListener}.
+Daí para a passagem do parâmetro apenas crie uma instância da classe. Por exemplo, suponha que você
+tenha uma classe chamada \texttt{OpcoesContato} que implementa \texttt{OnItemLongClickListener}, nesse
+caso a linha \circled{4} se tornaria:
+
+\inlinecode{listView.setOnItemLongClickListener(new OpcoesContato());}
+
 \subsection{Diálogo de confirmação}
 
-Deletar algo é uma coisa que deve ser feita com cuidado, então sempre é bom confirmar com
-o usuário se ele deseja realmente deletar um contato. Para isso usaremos o \texttt{AlertDialog.Builder}
-mais uma vez, agora apenas com uma mensagem e os botões \textit{Sim} ou \textit{Não}.
+Deletar dados é uma ação que deve ser feita com cuidado, então sempre é bom confirmar com
+o usuário se ele deseja realmente deletar, no nosso caso, um contato. Para isso usaremos o
+\texttt{AlertDialog.Builder} mais uma vez, agora apenas com uma mensagem e os botões
+\textit{Sim} ou \textit{Não}.
 
 
 Ainda em \texttt{MainActivity} criaremos um outro \texttt{AlertDialog.Builder} no momento que o usuário
@@ -64,8 +88,8 @@ uma mensagem do tipo, \textit{Cancelado pelo usuário}, para isso usando o méto
 O Android foi desenvolvido com muitos recursos pré-prontos para facilitar o desenvolvimento de aplicações.
 Um recurso bastante útil é a distinção dos dados que irão ser inseridos nos \texttt{TextView}'s. Com isso
 o teclado virtual do cliente se adapta ao tipo de dado que será inserido. No nosso caso faremos distinção
-do campo \texttt{telefone}, onde apenas números e hífens(-) podem ser inseridos, e o campo \texttt{e-mail}
-onde a presença do arroba(@) e pontos(.) são elementos essenciais.
+do campo \texttt{telefone}, onde apenas números e hífens (-) podem ser inseridos, e o campo \texttt{e-mail}
+onde a presença do arroba (@) e pontos (.) são elementos essenciais.
 
 Vejamos alguns valores aceitos pelo \texttt{inputType}:
 
@@ -73,25 +97,25 @@ Vejamos alguns valores aceitos pelo \texttt{inputType}:
 
   \item Para textos:
   \begin{itemize}
-    \item text
-    \item textCapCharacters
-    \item textMultiLine
-    \item textUri
-    \item textEmailAddress
-    \item textPersonName
-    \item textPassword
-    \item textVisiblePassword
+    \item \texttt{text}
+    \item \texttt{textCapCharacters}
+    \item \texttt{textMultiLine}
+    \item \texttt{textUri}
+    \item \texttt{textEmailAddress}
+    \item \texttt{textPersonName}
+    \item \texttt{textPassword}
+    \item \texttt{textVisiblePassword}
   \end{itemize}
 
   \item Para números:
   \begin{itemize}
-    \item number
-    \item numberSigned
-    \item numberDecimal
-    \item phone
-    \item datetime
-    \item date
-    \item time
+    \item \texttt{number}
+    \item \texttt{numberSigned}
+    \item \texttt{numberDecimal}
+    \item \texttt{phone}
+    \item \texttt{datetime}
+    \item \texttt{date}
+    \item \texttt{time}
   \end{itemize}
 
 \end{itemize}
@@ -114,7 +138,7 @@ dados. Entre eles estão os objetos \texttt{Patterns.EMAIL\b{ }ADDRESS} e \textt
 eles podemos validar de forma simples os dados inseridos em nosso formulário.
 
 Em nosso \texttt{SalvarActivity} adicionaremos um método \inlinecode{validar} passando como parâmetro
-um \texttt{Contato}. Copie o método \inlinecode{exibirMensagem} da classe \texttt{MainActivity} para
+um \texttt{ContentValues}. Copie o método \inlinecode{exibirMensagem} da classe \texttt{MainActivity} para
 mostrar uma mensagem caso alguma validação seja falsa.
 
 \paragraph{OBS:} Para um melhor reuso crie uma classe abstrata que implementa o método \inlinecode{exibirMensagem}
@@ -179,6 +203,14 @@ Ele servirá para implementarmos o trecho que realiza a chamada. Vamos a ele:
   \caption{Item chamar no diálogo [MainActivity.java]}
 \end{listing}
 
+Nesse trecho de código podemos ver o uso de \texttt{Intent}'s do prórpio Android, nesse caso o
+\inlinecode{Intent.ACTION\b{ }CALL} (veja linha \circled{14}). Ele serve para chamar uma \texttt{Activity} que realize ligações.
+Atente apenas para um detalhe - esse \texttt{Intent} faz a chamada sem confirmação. Caso você
+queira que o usuário possa visualizar o número no discador use o \texttt{Intent} \inlinecode{Intent.ACTION\b{ }DIAL}.
+Faça esse teste e veja a diferença entre os \texttt{Intent}'s.
+
+Veja mais detalhes em \url{http://developer.android.com/reference/android/content/Intent.html}.
+
 \newpage
 
 \subsection{Enviando e-mail}
@@ -223,7 +255,7 @@ foi encontrado.
 
 \subsection{Forçando região para teste}
 
-Para podermos testar as \texttt{strings} de i18n podemos forçar o \texttt{Activity}
+Para podermos testar as \texttt{strings} de \textit{i18n} podemos forçar o \texttt{Activity}
 a utilizar uma determinada linguagem. Isso se dá por meio da classe \texttt{Locale}.
 Façamos um teste com o \texttt{SalvarActivity} inserindo o trecho de código abaixo no
 método \texttt{onCreate}. Vamos a ele:
@@ -310,12 +342,12 @@ e outro \texttt{String Array} para representar os índices:
 
 \subsection{Spinner, diálogo de seleção}
 
-O Spinner é ideal quando temos que escolher entre valores fixos, sejam eles estáticos ou dinâmicos.
+O \textit{Spinner} é ideal quando temos que escolher entre valores fixos, sejam eles estáticos ou dinâmicos.
 Nosso exemplo irá utilizar valores estáticos para popular o mesmo. Para isso utilizaremos o
 \texttt{array\b{ }grupos} que criamos em \texttt{res/values/strings.xml}. Também veremos um exemplo
 de uso da classe \texttt{android.R} como visto em \ref{par:r} em que é explicado a diferença entre
-as classes de recusros. Mas antes temos que atualizar nosso \textit{layout} \texttt{salvar.xml}.
-Segue o trecho:
+as classes de recursos. Mas antes temos que atualizar nosso \textit{layout} \texttt{salvar.xml}.
+Adicione o \textit{Spinner} logo abaixo do \texttt{e-mail}, como mostra o trecho abaixo:
 
 % res/layout/salvar.xml
 \begin{listing}[H]
@@ -323,8 +355,7 @@ Segue o trecho:
   \caption{Adicionando elemento Spinner [res/layout/salvar.xml]}
 \end{listing}
 
-Adicione o Spinner logo abaixo do \texttt{e-mail}. Agora já podemos carregar e popular o Spinner
-na classe \texttt{SalvarActivity}.
+Agora já podemos carregar e popular o \textit{Spinner} na classe \texttt{SalvarActivity}.
 
 % SaveActivity.java
 \begin{listing}[H]
@@ -333,7 +364,7 @@ na classe \texttt{SalvarActivity}.
 \end{listing}
 
 Note a utilização da classe \texttt{android.R} nas linhas \circled{10} e \circled{11}. Eles servem
-para definir o \textit{layout} do Spinner. Isso quer dizer que você pode implementar como seu Spinner
+para definir o \textit{layout} do \textit{Spinner}. Isso quer dizer que você pode implementar como seu \textit{Spinner}
 irá aparecer na tela da mesma maneira que implementamos a linha da \texttt{ListView} em \ref{ssec:listview}.
 
 \subsection{A classe PreferenceActivity}
@@ -400,7 +431,7 @@ um impacto em outros trechos do código. Conserte-os da seguinte maneira:
   \caption{Mudança em método irParaSalvar [MainActivity.java]}
 \end{listing}
 
-Por fim temos que selecionar o tem que o usuário quer que esteja selecionado por padrão ao inserir
+Por fim temos que selecionar o item que o usuário quer que esteja selecionado por padrão ao inserir
 um novo contato. Assim, em \texttt{SalvarActivity} adicione o trecho:
 
 % SaveActivity.java
@@ -416,7 +447,7 @@ usada comumente com o ícone e o texto logo abaixo. Essa ideia pode ser facilmen
 um aplicativo Android usando \texttt{GridView}.
 
 Nessa implementação vamos criar uma tela que mostra os grupos de contatos em forma de \textit{Grid}
-e ao clicar levaremos o usuário a lista de contatos mostrando apenas aqueles contatos do determinado
+e ao clicar levaremos o usuário a lista de contatos mostrando apenas aqueles contatos de um determinado
 grupo.
 
 \subsection{Layout usando GridView}
@@ -463,7 +494,7 @@ Para isso usaremos a classe abstrata \texttt{BaseAdapter}.
   \caption{Adapter responsável por cada item do Grid [GruposActivity.java]}
 \end{listing}
 
-Chegou a hora de você usar a ferramenta Inkscape e criar alguns ícones. Para os exemplos a seguir
+Nesse momento precisamos usar a ferramenta Inkscape e criar alguns ícones. Para os exemplos a seguir
 você deve criar um ícone para cada item do grupo, sendo eles:
 
 \begin{itemize}

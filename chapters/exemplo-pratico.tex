@@ -20,7 +20,7 @@ só poderá criar algo se você souber utilizar bem as ferramentas.
 
 \subsection{AndroidManifest.xml}
 
-Esse é o arquivo que define nossa aplicação, mapeia as \texttt{Activity}'s, entre outras configurações. Ao finalizar
+Este é o arquivo que define nossa aplicação, mapeia as \texttt{Activity}'s, entre outras configurações. Ao finalizar
 a criação do projeto, inicialmente este arquivo deverá conter o seguinte conteúdo:
 
 % AndroidManifest.xml
@@ -34,10 +34,10 @@ a criação do projeto, inicialmente este arquivo deverá conter o seguinte cont
 Não existe método \inlinecode{main} visível ao programador no Android. Ao invés disso temos \texttt{Activity}'s.
 Para que o Android saiba qual ele deve iniciar primeiro utilizamos um \texttt{intent-filter} como visto
 no trecho de código acima da linha \circled{09} a \circled{12}.
-Para nossa primeira \texttt{Activity} criaremos uma lista de contatos e um menu para criação de novo contato.
+Para nossa primeira \texttt{Activity} criaremos uma lista de contatos e um menu para criação de um novo contato.
 
-Para construir o layout inicial de nossa aplicação precisamos editar o arquivo \texttt{main.xml} localizado em
-\texttt{res/layout}.
+Para construir o \textit{layout} inicial de nossa aplicação precisamos editar o arquivo \texttt{main.xml}
+localizado em \texttt{res/layout}.
 
 % res/layout/main.xml
 \begin{listing}[H]
@@ -46,7 +46,7 @@ Para construir o layout inicial de nossa aplicação precisamos editar o arquivo
 \end{listing}
 
 Deste momento em diante tenha em mente que os arquivos \texttt{\gls{xml}} aqui descritos são apenas para
-você poder comparar e ver se não esqueceu nada. Todos os \textit{layout}'s devem ser criados usando a
+você poder comparar e ver se não esqueceu de nada. Todos os \textit{layout}'s devem ser criados usando a
 ferramenta ADT. Você irá notar que ao abrir o \texttt{xml} uma janela de \textit{layout} aparecerá.
 Para visualizar o \texttt{xml} ou o \textit{layout} gráfico basta utilizar a aba inferior esquerda.
 
@@ -235,7 +235,7 @@ e o uso de reticências caso o nome seja maior que a tela usando \texttt{android
 \circled{15}.
 
 Agora vamos até \texttt{ContatoHelper} e adicionar o método \inlinecode{listar}. E também adicionaremos
-métodos para facilitar obter os valores de cada atributo.
+métodos para facilitar a obtenção dos valores de cada atributo.
 
 % ContatoHelper.java
 \begin{listing}[H]
@@ -288,7 +288,7 @@ Para isso precisamos passar um parâmetro para o \texttt{Activity}. Usaremos ent
 \texttt{Intent} que é responsável por isso, \inlinecode{putExtra(chave, valor)}.
 
 Para uma passagem de parâmetros segura devemos usar um \textit{namespace} para que não colida com
-nenhum nome já utilizado pelo Android. Para isso criaremos uma variável estática do tipo \texttt{String}.
+nenhum nome já utilizado pelo Android. Assim, vamos criar uma variável estática do tipo \texttt{String}.
 Isso acontecerá quando o usuário pressionar a linha que ele deseja editar. Podemos fazer isso utilizando
 a interface \texttt{OnItemClickListener}.
 
@@ -319,3 +319,6 @@ devemos carregar os dados existentes no banco de dados e depois atualizá-los.
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/SalvarActivity-3.java }
   \caption{Usando Activity para criar ou atualizar [SalvarActivity.java]}
 \end{listing}
+
+Com isso encerramos um \textbf{CRUD} básico, mas completo. A seguir temos implementações mais específicas
+que irão tornar nossa aplicação mais profissional.
