@@ -8,15 +8,15 @@
 \glodelim 
 		\glsnumformat{1}\delimT 
 
-\gloitem {\glosslabel{glo:AVD}{AVD}}Android Virtual Device\relax
+\gloitem {\glosslabel{glo:AVD}{AVD}}Android Virtual Device (Dispositivo Virtual Android)\relax
 \glodelim 
 		\glsnumformat{4}\delimT \gloskip \glogroupD
 
-\gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas.\relax
+\gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas\relax
 \glodelim 
 		\glsnumformat{14}\delimN \glsnumformat{33}\delimT 
 
-\gloitem {\glosslabel{glo:debug}{debug}}termo utilizado para indicar quais as operações que estão sendo executadas, verificando assim se estão funcionando como deveriam ou se existem defeitos.\relax
+\gloitem {\glosslabel{glo:debug}{debug}}termo utilizado para indicar quais as operações que estão sendo executadas, verificando assim se estão funcionando como deveriam ou se existem defeitos\relax
 \glodelim 
 		\glsnumformat{35}\delimT \gloskip \glogroupI
 
@@ -28,7 +28,7 @@
 \glodelim 
 		\glsnumformat{2}\delimT \gloskip \glogroupL
 
-\gloitem {\glosslabel{glo:LTS}{LTS}}Long Term Support (Termo de Suporte a Longo Prazo), indica que essa versão terá atualizações por um período de tempo maior, sendo assim você terá um ambiente estável e sempre atualizado.\relax
+\gloitem {\glosslabel{glo:LTS}{LTS}}Long Term Support (Termo de Suporte a Longo Prazo), indica que uma versão do Ubuntu terá atualizações por um período de tempo maior, sendo assim você terá um ambiente estável e sempre atualizado\relax
 \glodelim 
 		\glsnumformat{1}\delimT 
 
@@ -36,7 +36,7 @@
 \glodelim 
 		\glsnumformat{1}\delimT \gloskip \glogroupP
 
-\gloitem {\glosslabel{glo:PPA}{PPA}}Personal Package Archives (Pacote de Arquivos Pessoais), pacotes de terceiros, ou seja, que não são oriundos do repositório oficial do Ubuntu.\relax
+\gloitem {\glosslabel{glo:PPA}{PPA}}Personal Package Archives (Pacote de Arquivos Pessoais), pacotes de terceiros, ou seja, que não são oriundos do repositório oficial do Ubuntu\relax
 \glodelim 
 		\glsnumformat{2}\delimT \gloskip \glogroupS
 
@@ -48,7 +48,7 @@
 \glodelim 
 		\glsnumformat{2}\delimT \gloskip \glogroupX
 
-\gloitem {\glosslabel{glo:xml}{xml}}eXtensible Markup Language, foi desenvolvida com o propósito de estruturar, armazenar e transportar informações.\relax
+\gloitem {\glosslabel{glo:xml}{xml}}eXtensible Markup Language, foi desenvolvida com o propósito de estruturar, armazenar e transportar informações\relax
 \glodelim 
 		\glsnumformat{10}\delimT 
 \end{theglossary}

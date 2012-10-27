@@ -1,4 +1,4 @@
-% makeindex style file created by LaTeX for document "android-101" on 2012-10-25
+% makeindex style file created by LaTeX for document "android-101" on 2012-10-27
 keyword "\\glossaryentry"
 preamble "\\begin{theglossary}"
 postamble "\n\\end{theglossary}\n"

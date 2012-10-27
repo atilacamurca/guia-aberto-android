@@ -42,7 +42,7 @@ Você já deve ter notado o uso de \textit{interface}'s como parâmetro dos mét
 na linha \circled{4} e \circled{11} do código acima. Essa prática obriga ao programador implementar
 a classe na passagem dos parâmetros.
 
-Essa ideia vem de algumas linguagens de programação que possuem funções como parâmetros. Como o Java
+Essa ideia vem de algumas linguagens de programação que possuem funções como parâmetros para outras funções. Como o Java
 não suporta essa característica, a solução veio em forma de uma \textit{interface}, a qual o programador
 é obrigado a implementar seus métodos. Com isso o método que recebe a \textit{interface} como parâmetro
 sabe exatamente o que ela tem disponível.
@@ -258,7 +258,7 @@ foi encontrado.
 Para podermos testar as \texttt{strings} de \textit{i18n} podemos forçar o \texttt{Activity}
 a utilizar uma determinada linguagem. Isso se dá por meio da classe \texttt{Locale}.
 Façamos um teste com o \texttt{SalvarActivity} inserindo o trecho de código abaixo no
-método \texttt{onCreate}. Vamos a ele:
+método \inlinecode{onCreate}. Vamos a ele:
 
 % SaveActivity.java
 \begin{listing}[H]
@@ -283,7 +283,7 @@ clique em \texttt{Add New Locale}. Digite \texttt{pt\b{ }BR} e clique em \texttt
 % Preferencias
 \section{Utilizando as Preferências do Android}
 
-O Android já disponibiliza uma maneira de criar preferências de forma fácil. Para demostrar implementaremos
+O Android já disponibiliza uma maneira de criar preferências de forma fácil. Para demonstrar implementaremos
 um exemplo bem amplo, que irá nos ajudar a entender ainda mais de Android. Para começar adicionaremos
 um nova coluna a nossa tabela \texttt{contato} chamada \texttt{grupo}. Depois adicionaremos um \textit{array}
 de \textit{string}'s ao nosso arquivo \texttt{strings.xml} e ainda vamos aprender a utilizar um
@@ -413,7 +413,7 @@ um item no menu.
 \end{listing}
 
 Agora que adicionamos um item ao menu, temos que capturar o evento quando o usuário o selecionar
-e direcioná-lo as Preferências. Isso deve ser feito em \texttt{MainActivity}.
+e direcioná-lo às Preferências. Isso deve ser feito em \texttt{MainActivity}.
 
 % MainActivity.java
 \begin{listing}[H]
@@ -563,7 +563,7 @@ estão definidos na tabela abaixo:
 \texttt{res/drawable-ldpi} & \texttt{36px}\\
 \hline
 \end{tabularx}
-\caption{Paleta de cores do Android}
+\caption{Localização e tamanho dos ícones}
 \end{table}
 
 Exporte o ícone para cada um desses diretórios, crie-os caso não existam. Como temos quatro
