@@ -1,54 +1,50 @@
 \begin{theglossary}\glogroupA
 
-\gloitem {\glosslabel{glo:ADT}{ADT}}Android Development Tools (Ferramentas de Desenvolvimento Android)\relax
-\glodelim 
-		\glsnumformat{1}\delimT 
-
 \gloitem {\glosslabel{glo:API}{API}}Application Programming Interface (Interface de Programação de Aplicativos)\relax
 \glodelim 
 		\glsnumformat{1}\delimT 
 
 \gloitem {\glosslabel{glo:AVD}{AVD}}Android Virtual Device (Dispositivo Virtual Android)\relax
 \glodelim 
-		\glsnumformat{4}\delimT \gloskip \glogroupD
+		\glsnumformat{3}\delimT \gloskip \glogroupD
 
 \gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas\relax
 \glodelim 
-		\glsnumformat{14}\delimN \glsnumformat{33}\delimT 
+		\glsnumformat{12}\delimN \glsnumformat{31}\delimT 
 
 \gloitem {\glosslabel{glo:debug}{debug}}termo utilizado para indicar quais as operações que estão sendo executadas, verificando assim se estão funcionando como deveriam ou se existem defeitos\relax
 \glodelim 
-		\glsnumformat{35}\delimT \gloskip \glogroupI
+		\glsnumformat{33}\delimT \gloskip \glogroupH
+
+\gloitem {\glosslabel{glo:HTTP}{HTTP}}Hypertext Transfer Protocol (Protocolo de Transferência de Hipertexto), protocolo a nível de aplicação para sistemas de informações distribuídos e colaborativos. É utilizado pela World-Wide Web (WWW) desde 1990 (\url {http://www.w3.org/Protocols/rfc2616/rfc2616.html}).\relax
+\glodelim 
+		\glsnumformat{47}\delimT \gloskip \glogroupI
 
 \gloitem {\glosslabel{glo:IDE}{IDE}}Integrated Development Environment (Ambiente de Desenvolvimento Integrado), são softwares que auxiliam no desenvolvimento de outros softwares. Ex. NetBeans IDE \url {http://netbeans.org/}, Eclipse IDE \url {http://www.eclipse.org/}\relax
 \glodelim 
 		\glsnumformat{1}\delimT \gloskip \glogroupJ
 
-\gloitem {\glosslabel{glo:JDK}{JDK}}Java Development Kit (Kit de Desenvolvimento Java). Refere-se ao Java utilizado para desenvolvimento\relax
+\gloitem {\glosslabel{glo:JSON}{JSON}}acrônimo para JavaScript Object Notation (Notação de Objetos JavaScript), é um formato leve para intercâmbio de dados computacionais, ou seja, é uma ponte entre a conversação entre linguagens diferentes (\url {http://www.json.org/json-pt.html})\relax
 \glodelim 
-		\glsnumformat{2}\delimT \gloskip \glogroupL
+		\glsnumformat{48}\delimT \gloskip \glogroupL
 
 \gloitem {\glosslabel{glo:LTS}{LTS}}Long Term Support (Termo de Suporte a Longo Prazo), indica que uma versão do Ubuntu terá atualizações por um período de tempo maior, sendo assim você terá um ambiente estável e sempre atualizado\relax
 \glodelim 
-		\glsnumformat{1}\delimT 
-
-\gloitem {\glosslabel{glo:lucid}{lucid}}Codinome utilizado para a versão 10.04 do Ubuntu (Lucid Lynx)\relax
-\glodelim 
 		\glsnumformat{1}\delimT \gloskip \glogroupP
+
+\gloitem {\glosslabel{glo:PHP}{PHP}}acrônimo recursivo para PHP: Hypertext Preprocessor, é uma linguagem de script open source de uso geral, muito utilizada e especialmente guarnecida para o desenvolvimento de aplicações Web embútivel dentro do HTML. Outras informações em \url {http://php.net/}\relax
+\glodelim 
+		\glsnumformat{47}\delimT 
 
 \gloitem {\glosslabel{glo:PPA}{PPA}}Personal Package Archives (Pacote de Arquivos Pessoais), pacotes de terceiros, ou seja, que não são oriundos do repositório oficial do Ubuntu\relax
 \glodelim 
-		\glsnumformat{2}\delimT \gloskip \glogroupS
+		\glsnumformat{1}\delimT \gloskip \glogroupS
 
 \gloitem {\glosslabel{glo:SDK}{SDK}}Software Development Kit (Kit de Desenvolvimento de Software)\relax
-\glodelim 
-		\glsnumformat{3}\delimT 
-
-\gloitem {\glosslabel{glo:Synaptic}{Synaptic}}é um gerenciador de pacotes em modo gráfico baseado em GTK+ e APT. Ele permite que você instale, atualize e remova pacotes de software de uma maneira amigável. Para instalar, abra um terminal e digite como super usuário (\textit {root}): \texttt {apt-get install synaptic}\relax
 \glodelim 
 		\glsnumformat{2}\delimT \gloskip \glogroupX
 
 \gloitem {\glosslabel{glo:xml}{xml}}eXtensible Markup Language, foi desenvolvida com o propósito de estruturar, armazenar e transportar informações\relax
 \glodelim 
-		\glsnumformat{10}\delimT 
+		\glsnumformat{8}\delimT 
 \end{theglossary}

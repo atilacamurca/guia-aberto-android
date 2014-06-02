@@ -1,0 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:id="@+id/LinearLayout1"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:orientation="vertical" >
+   <TextView
+      android:id="@+id/tv_resposta"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:lines="3"
+      android:text=""
+      tools:context=".MainActivity" />
+   <EditText
+      android:id="@+id/et_saudacao"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ems="10"
+      android:hint="Saudação..." />
+   <Button
+      android:id="@+id/bt_enviar"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Enviar" />
+</LinearLayout>

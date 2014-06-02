@@ -16,7 +16,7 @@ public class ContatoHelper extends SQLiteOpenHelper {
    @Override
    public void onCreate(SQLiteDatabase db) {
       db.execSQL("CREATE TABLE contato (_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-              + " nome TEXT, fone TEXT, email TEXT);");
+              + " nome TEXT, telefone TEXT, email TEXT);");
    }
 
    @Override

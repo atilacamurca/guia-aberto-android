@@ -1,6 +1,6 @@
 public Cursor listar() {
    return getReadableDatabase()
-      .rawQuery("SELECT _id, nome, fone, email FROM contato ORDER BY nome",
+      .rawQuery("SELECT _id, nome, telefone, email FROM contato ORDER BY nome",
         null);
 }
 

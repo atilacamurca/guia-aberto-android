@@ -1,0 +1,47 @@
+\BOOKMARK [0][-]{chapter.1}{Preparando o Ambiente de Desenvolvimento}{}
+\BOOKMARK [1][-]{section.1.1}{Introdu\347\343o}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Instala\347\343o}{chapter.1}
+\BOOKMARK [2][-]{subsection.1.2.1}{Java JDK 6}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.2}{Android Studio}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.3}{Android SDK }{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.4}{Android Virtual Device \(AVD\)}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.5}{Sqlite3}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.6}{Sqliteman}{section.1.2}
+\BOOKMARK [2][-]{subsection.1.2.7}{Inkscape}{section.1.2}
+\BOOKMARK [0][-]{chapter.2}{Exemplo pr\341tico}{}
+\BOOKMARK [1][-]{section.2.1}{Primeira aplica\347\343o - Contatos}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{AndroidManifest.xml}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{Activity}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.3}{Formul\341rios}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.4}{Construindo o Model da aplica\347\343o}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.5}{Mostrando os dados na View}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.6}{Editando dados existentes}{section.2.1}
+\BOOKMARK [0][-]{chapter.3}{Livro de Receitas}{}
+\BOOKMARK [1][-]{section.3.1}{Mostrando Di\341logos}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.1.1}{Editar/Excluir ao clicar e segurar na ListView}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.2}{Di\341logo de confirma\347\343o}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.3}{Entrada de diferentes tipos de dados}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.4}{Valida\347\343o de dados}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.5}{Fazendo uma liga\347\343o}{section.3.1}
+\BOOKMARK [2][-]{subsection.3.1.6}{Enviando e-mail}{section.3.1}
+\BOOKMARK [1][-]{section.3.2}{Internacionaliza\347\343o \(i18n\)}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{For\347ando regi\343o para teste}{section.3.2}
+\BOOKMARK [2][-]{subsection.3.2.2}{For\347ando regi\343o pelo emulador}{section.3.2}
+\BOOKMARK [1][-]{section.3.3}{Utilizando as Prefer\352ncias do Android}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{Atualizando colunas de uma tabela}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.2}{Array de Strings}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.3}{Spinner, di\341logo de sele\347\343o}{section.3.3}
+\BOOKMARK [2][-]{subsection.3.3.4}{A classe PreferenceActivity}{section.3.3}
+\BOOKMARK [1][-]{section.3.4}{Grupo de Contatos usando Grid}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.4.1}{Layout usando GridView}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.2}{Activity para visualizar os Grupos}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.3}{Implementando o Adapter}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.4}{Selecionando contatos de um determinado grupo}{section.3.4}
+\BOOKMARK [0][-]{chapter.4}{Servi\347os e Internet}{}
+\BOOKMARK [1][-]{section.4.1}{Fazendo requisi\347\365es HTTP}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{Servidor de requisi\347\365es HTTP}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{App que realiza acesso externo}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{Tarefas em background com Service}{chapter.4}
+\BOOKMARK [0][-]{appendix.A}{Sobre o Autor}{}
+\BOOKMARK [0][-]{appendix.B}{JSON}{}
+\BOOKMARK [0][-]{appendix*.24}{Gloss\341rio}{}
