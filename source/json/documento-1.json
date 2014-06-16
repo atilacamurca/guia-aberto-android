@@ -1,0 +1,13 @@
+{
+  "titulo": "Guia Aberto de Android",
+  "autor": "Átila Camurça",
+  "edicao": 3,
+  "capitulos": [
+    "Preparando o Ambiente de Desenvolvimento",
+    "Exemplo Prático",
+    "Livro de Receitas",
+    "Serviços e Internet"
+  ],
+  "codigo-livre?": true,
+  "url": "https://github.com/atilacamurca/guia-aberto-android"
+}

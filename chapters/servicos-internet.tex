@@ -1,142 +1,146 @@
 \chapter{Serviços e Internet}
 
-Neste capítulo vamos implementar uma sincronização com servidor externo dos contatos da nossa
-aplicação. Através de requisições HTTP seremos capazes de enviar e receber dados do \textit{smartphone}
-para um servidor, bem como utilizar um recurso do Android chamado \texttt{Service}. Ele terá a habilidade
-de executar tarefas em \textit{background} enquanto o usuário continua a utilizar o aparelho.
+Neste capítulo vamos implementar uma sincronização com servidor externo
+dos contatos da nossa aplicação. Através de requisições HTTP seremos
+capazes de enviar e receber dados do \emph{smartphone} para um servidor,
+bem como utilizar um recurso do Android chamado \texttt{Service}. Ele
+terá a habilidade de executar tarefas em \emph{background} enquanto o
+usuário continua a utilizar o aparelho.
 
-Faremos o seguinte, vamos inicialmente entender como funciona e criar um cliente HTTP simples
-que irá enviar dados e receber respostas. Logo em seguida vamos ver como funciona um \texttt{Service}
-e quais suas vantagens. Por fim juntaremos esses recursos para criar um servidor de sincronização
-dos contatos.
+Faremos o seguinte, vamos inicialmente entender como funciona e criar um
+cliente HTTP simples que irá enviar dados e receber respostas. Logo em
+seguida vamos ver como funciona um \texttt{Service} e quais suas
+vantagens. Por fim juntaremos esses recursos para criar um servidor de
+sincronização dos contatos.
 
 \section{Fazendo requisições HTTP}
 
-O Android vem com um cliente \gls{http} embutido provido pela Apache, o \texttt{HTTP Components}
-(\url{http://hc.apache.org/}). Na página \url{http://hc.apache.org/poweredby.html} podemos
-observar que o Android utiliza o \texttt{HttpCore} e o \texttt{HttpClient} 4.0 embutidos,
-ou seja, não é preciso adicioná-los como bibliotecas para a utilização.
+O Android vem com um cliente http embutido provido pela Apache, o
+\texttt{HTTP Components} (\url{http://hc.apache.org/}). Na página
+\url{http://hc.apache.org/poweredby.html} podemos observar que o Android
+utiliza o \texttt{HttpCore} e o \texttt{HttpClient} 4.0 embutidos, ou
+seja, não é preciso adicioná-los como bibliotecas para a utilização.
 
 \subsection{Servidor de requisições HTTP}
 
-Para iniciar criaremos uma página em \gls{php} para receber requisições HTTP e retornar dados.
-A instalação do ambiente PHP no Ubuntu é bem simples. Abra um terminal e siga os passos a seguir:
+Para iniciar criaremos uma página em php para receber requisições HTTP e
+retornar dados. A instalação do ambiente PHP no Ubuntu é bem simples.
+Abra um terminal e siga os passos a seguir:
 
-\begin{flushleft}\texttt{\$ sudo su\\
-\# apt-get install php5 apache2\\}
-\end{flushleft}
+\begin{verbatim}
+$ sudo su
+# apt-get install php5 apache2
+\end{verbatim}
+Agora que temos um servidor HTTP e uma linguagem de \emph{script} para
+tratar requisições, vamos a criação da página PHP. Ainda no terminal,
+faça:
 
-Agora que temos um servidor HTTP e uma linguagem de \textit{script} para tratar requisições, vamos
-a criação da página PHP. Ainda no terminal, faça:
-
-\begin{flushleft}\texttt{\# cd /var/www\\
-\# mkdir contatos\\
-\# cd contatos\\
-\# touch index.php\\
-\# chown usuario.usuario index.php\\}
-\end{flushleft}
-
+\begin{verbatim}
+# cd /var/www
+# mkdir contatos
+# cd contatos
+# touch index.php
+# chown usuario.usuario index.php
+\end{verbatim}
 \paragraph{Observação}
 
-Note que na última linha troque \texttt{usuario.usuario} pelo seu nome de
-usuário seguido de ponto e o nome do seu grupo (que por padrão é o mesmo nome de usuário). Isso vai
-permitir que você possa editar o arquivo sem ter que ser super usuário (\textit{root}).
+Note que na última linha troque \texttt{usuario.usuario} pelo seu nome
+de usuário seguido de ponto e o nome do seu grupo (que por padrão é o
+mesmo nome de usuário). Isso vai permitir que você possa editar o
+arquivo sem ter que ser super usuário (\emph{root}).
 
 Edite o arquivo com o seguinte conteúdo.
 
-% index.php
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ php }{ source/index-1.php }
   \caption{script PHP para tratar requisições [index.php]}
 \end{listing}
 
-Esse trecho de código funciona da seguinte maneira. A página \texttt{index.php} recebe um parâmetro
-chamado \texttt{saudacao} [linha \circled{11}]. Em seguida um teste é realizado para saber qual a
-saudação e onde é determinado qual resposta será devolvida [linhas \circled{13} a \circled{22}].
-Para a resposta é utilizada uma tecnologia chamada \gls{json}. Mais detalhes no Apêndice \ref{appx:json}.
-
-% TODO: criar aplicativo saudacao que acessa a página index.php
+Esse trecho de código funciona da seguinte maneira. A página
+\texttt{index.php} recebe um parâmetro chamado \texttt{saudacao}
+{[}linha \circled{11}{]}. Em seguida um teste é realizado para saber
+qual a saudação e onde é determinado qual resposta será devolvida
+{[}linhas \circled{13} a \circled{22}{]}. Para a resposta é utilizada
+uma tecnologia chamada json. Mais detalhes no Apêndice \ref{appx:json}.
 
 \subsection{App que realiza acesso externo}
 
-Com o servidor implementado precisamos criar um aplicativo Android capaz de acessar nossa página.
-No eclipse, crie um novo projeto Android chamado \textbf{Saudacao} usando nome do pacote
-\inlinecode{saudacao.app} e um \texttt{Activity} chamado \texttt{MainActivity}.
+Com o servidor implementado precisamos criar um aplicativo Android capaz
+de acessar nossa página. No eclipse, crie um novo projeto Android
+chamado \textbf{Saudacao} usando nome do pacote \texttt{saudacao.app} e
+um \texttt{Activity} chamado \texttt{MainActivity}.
 
-Inicialmente criaremos uma classe \texttt{Requisicao} contendo o método público \inlinecode{obterResposta},
-além dos métodos privados \inlinecode{enviar}, \inlinecode{lerResposta} e \inlinecode{parseJSON}.
+Inicialmente criaremos uma classe \texttt{Requisicao} contendo o método
+público \texttt{obterResposta}, além dos métodos privados
+\texttt{enviar}, \texttt{lerResposta} e \texttt{parseJSON}.
 
-% Requisicao.java
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/Requisicao-1.java }
   \caption{Classe para realizar requisições HTTP [Requisicao.java]}
 \end{listing}
 
-Uma coisa chama bastante atenção neste trecho de código. Nossa \inlinecode{URL} usa o \texttt{IP
-10.0.2.2} que no Android refere-se ao \texttt{localhost}. Isso porque cada instância do emulador
-roda sob um roteador/\textit{firewall} virtual que o isola das interfaces e configurações de rede
-da máquina e da \textit{internet}.
+Uma coisa chama bastante atenção neste trecho de código. Nossa URL usa o
+\texttt{IP 10.0.2.2} que no Android refere-se ao \texttt{localhost}.
+Isso porque cada instância do emulador roda sob um
+roteador/\emph{firewall} virtual que o isola das interfaces e
+configurações de rede da máquina e da \emph{internet}.
 
 Mais detalhes sobre esse assunto podem ser encontrados em
 \url{http://developer.android.com/tools/devices/emulator.html#emulatornetworking}.
 
-Vamos a implementação do método \inlinecode{enviar}.
+Vamos a implementação do método \texttt{enviar}.
 
-% Requisicao.java
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/Requisicao-2.java }
   \caption{Implementação do método enviar [Requisicao.java]}
 \end{listing}
 
-Em seguida temos o método \inlinecode{lerResposta}.
+Em seguida temos o método \texttt{lerResposta}.
 
-% Requisicao.java
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/Requisicao-3.java }
   \caption{Implementação do método lerResposta [Requisicao.java]}
 \end{listing}
 
-\newpage
+Por fim o método \texttt{parseJSON}.
 
-Por fim o método \inlinecode{parseJSON}.
-
-% Requisicao.java
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/Requisicao-4.java }
   \caption{Implementação do método parseJSON [Requisicao.java]}
 \end{listing}
 
-Precisamos implementar o \textit{layout} que será usado pelo \texttt{MainActivity}.
+Precisamos implementar o \emph{layout} que será usado pelo
+\texttt{MainActivity}.
 
-% activity_main.xml
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/activity_main-1.xml }
-  \caption{layout para envio e recebimento de mensagens [activity\b{ }main.xml]}
+  \caption{layout para envio e recebimento de mensagens [activity_main.xml]}
 \end{listing}
 
-Esse é um layout bem simples contendo apenas um \texttt{TextView} para mostrar a resposta,
-um \texttt{EditText} para escrever a saudação a ser enviada e um \texttt{Button} que ao ser acionado
-envia a saudação ao servidor e apresenta a resposta na tela.
+Esse é um layout bem simples contendo apenas um \texttt{TextView} para
+mostrar a resposta, um \texttt{EditText} para escrever a saudação a ser
+enviada e um \texttt{Button} que ao ser acionado envia a saudação ao
+servidor e apresenta a resposta na tela.
 
 Agora vem o \texttt{MainActivity}.
 
-% MainActivity.java
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-15.java }
   \caption{Utilização da classe \texttt{Requisicao} [MainActivity.java]}
 \end{listing}
 
-Execute o projeto e teste as saudações. Digite \texttt{oi} e \texttt{tchau} para obter respostas.
-Com isso já somos capazes de enviar e obter dados de um servidor remoto.
+Execute o projeto e teste as saudações. Digite \texttt{oi} e
+\texttt{tchau} para obter respostas. Com isso já somos capazes de enviar
+e obter dados de um servidor remoto.
 
-\section{Tarefas em \textit{background} com \texttt{Service}}
+\section{Tarefas em \emph{background} com \texttt{Service}}
 
-Um \texttt{Service} é utilizado quando se quer executar tarefas que podem durar bastante tempo
-e que não tenham interação com o usuário ou para responder a outras aplicações sobre algum serviço
-que sua aplicação dispõe. Cada serviço deve ser regularmente mapeado no \texttt{AndroidManifest}
-da mesma forma que os \texttt{Activity}'s.
+Um \texttt{Service} é utilizado quando se quer executar tarefas que
+podem durar bastante tempo e que não tenham interação com o usuário ou
+para responder a outras aplicações sobre algum serviço que sua aplicação
+dispõe. Cada serviço deve ser regularmente mapeado no
+\texttt{AndroidManifest} da mesma forma que os \texttt{Activity}'s.
 
-Vamos voltar a implementar em cima da nossa aplicação \textbf{contatos} e criar um \texttt{Service}
-que irá sincronizar os dados do celular com o servidor.
-
-% http://www.felipesilveira.com.br/2010/05/content-providers/
+Vamos voltar a implementar em cima da nossa aplicação \textbf{contatos}
+e criar um \texttt{Service} que irá sincronizar os dados do celular com
+o servidor.

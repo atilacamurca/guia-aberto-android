@@ -36,6 +36,11 @@
 \usepackage{titlepic}
 % -- title pic
 
+% -- table
+\usepackage{ctable}
+\usepackage{float} % provides the H option for float placement
+% -- table
+
 \usepackage[hmargin=3cm,vmargin=3.5cm]{geometry}
 
 \renewcommand\listoflistingscaption{Lista de Códigos-fonte}
@@ -61,6 +66,10 @@
  {\bfseries\ttfamily\textcolor[RGB]{92,53,102}{#1}}}
 \newcommand{\menuaction}[1]{
  {\bfseries\ttfamily\textcolor[RGB]{206,92,0}{#1}}}
+
+\newcommand{\squarecolor}[1]{
+  {\fcolorbox{black}{#1}{\textcolor{#1}{TTT}}}
+}
 
 \usepackage{tikz}
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
@@ -186,6 +195,8 @@ por Átila Camurça
 
 \mainmatter
 % capítulos
+%\include{content}
+
 \include{chapters/preparando-ambiente}
 
 \include{chapters/exemplo-pratico}
@@ -195,6 +206,8 @@ por Átila Camurça
 \include{chapters/servicos-internet}
 
 % apêndices
+\appendix
+
 \include{chapters/sobre}
 
 \include{chapters/json}

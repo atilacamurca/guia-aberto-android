@@ -1,0 +1,30 @@
+\begin{theglossary}\glogroupA
+
+\gloitem {\glosslabel{glo:API}{API}}Application Programming Interface (Interface de Programação de Aplicativos)\relax
+\glodelim 
+		\glsnumformat{1}\delimT 
+
+\gloitem {\glosslabel{glo:AVD}{AVD}}Android Virtual Device (Dispositivo Virtual Android)\relax
+\glodelim 
+		\glsnumformat{3}\delimT \gloskip \glogroupD
+
+\gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas\relax
+\glodelim 
+		\glsnumformat{14}\delimN \glsnumformat{33}\delimT \gloskip \glogroupI
+
+\gloitem {\glosslabel{glo:IDE}{IDE}}Integrated Development Environment (Ambiente de Desenvolvimento Integrado), são softwares que auxiliam no desenvolvimento de outros softwares. Ex. NetBeans IDE \url {http://netbeans.org/}, Eclipse IDE \url {http://www.eclipse.org/}\relax
+\glodelim 
+		\glsnumformat{1}\delimT \gloskip \glogroupL
+
+\gloitem {\glosslabel{glo:LTS}{LTS}}Long Term Support (Termo de Suporte a Longo Prazo), indica que uma versão do Ubuntu terá atualizações por um período de tempo maior, sendo assim você terá um ambiente estável e sempre atualizado\relax
+\glodelim 
+		\glsnumformat{1}\delimT \gloskip \glogroupP
+
+\gloitem {\glosslabel{glo:PPA}{PPA}}Personal Package Archives (Pacote de Arquivos Pessoais), pacotes de terceiros, ou seja, que não são oriundos do repositório oficial do Ubuntu\relax
+\glodelim 
+		\glsnumformat{1}\delimT \gloskip \glogroupS
+
+\gloitem {\glosslabel{glo:SDK}{SDK}}Software Development Kit (Kit de Desenvolvimento de Software)\relax
+\glodelim 
+		\glsnumformat{2}\delimT 
+\end{theglossary}
