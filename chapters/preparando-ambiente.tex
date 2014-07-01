@@ -8,13 +8,13 @@ e bibliotecas:
 
 \begin{itemize}
 \item
-  Ubuntu 12.04
+  Ubuntu 14.04
 \item
   Java JDK 6 ou 7
 \item
   Android SDK
 \item
-  Android 4.2 API 17 e 2.2 API 8
+  Android 4.4 API 17 e 2.2 API 8
 \item
   Android Studio
 \item
@@ -26,13 +26,13 @@ e bibliotecas:
 \end{itemize}
 Você pode estar se perguntando: ``Por que utilizar essa configuração?''.
 Bom, para começar um ambiente de desenvolvimento precisa ser estável, e
-para isso nada melhor que o \url{http://releases.ubuntu.com/precise/}
-(Ubuntu 12.04) por ser \gls{lts}.
+para isso nada melhor que o \url{http://releases.ubuntu.com/trusty/}
+(Ubuntu 14.04) por ser \gls{lts}.
 
 A \gls{ide} Android Studio funciona independente do sistema operacional,
 então podemos utilizar a versão mais recente.
 
-Usaremos especificamente para os exemplos a seguir as versões 4.2 e 2.2
+Usaremos especificamente para os exemplos a seguir as versões 4.4 e 2.2
 do Android. Essas \gls{api}'s são uma ótima escolha inicial, pois são as
 mais utilizadas pelos aparelhos que rodam Android. É claro que você
 poderá instalar outras versões e compilar seus aplicativos para
@@ -42,10 +42,10 @@ poderá instalar outras versões e compilar seus aplicativos para
 
 \subsection{Java JDK 6}
 
-Para a instalação no Ubuntu 12.04 temos que habilitar um repositório de
-terceiros, também conhecido como \gls{ppa} (Personal Package Archives).
+Para a instalação no Ubuntu 14.04 temos que habilitar um repositório de
+terceiros, também conhecidos como \gls{ppa} (Personal Package Archives).
 Abra um terminal e execute os passos a seguir para adicionar um
-repositório e instalar o Java:
+repositório e instalar o Java 6:
 
 \begin{verbatim}
 $ sudo su
@@ -72,7 +72,7 @@ oficial do Android, é necessário uso do Java 6. Caso você queira
 utilizar o Java 7, você terá que configurar seu projeto Android para ser
 compilado com suporte a versão 6.
 
-A instalação do Java 7 no Ubuntu 12.04 pode ser feita da seguinte
+A instalação do Java 7 no Ubuntu 14.04 pode ser feita da seguinte
 maneira:
 
 \begin{verbatim}
@@ -98,7 +98,13 @@ pré-compilado. Basta apenas descompactar e executar o arquivo
 \texttt{bin/studio.sh}.
 
 Para sua comodidade você pode adicionar o Android Studio no menu do
-Ubuntu. Isso pode ser feito usando a dica do blog MAD3 Linux
+Ubuntu. Isso pode ser feito diretamente do Android Studio. Vá até o menu
+\texttt{Tools} (ou \texttt{Configure} caso você não tenha nenhum projeto
+aberto) $\rightarrow$ \texttt{Create Desktop Entry}. Daí ele pergunta se
+é só para o seu usuário ou para todos. Caso escolha para todos ele irá
+requisitar sua senha para fazer alterações como \texttt{root}.
+
+Para saber como faz isso manualmente use a dica do blog MAD3 Linux
 (\url{http://www.mad3linux.org}) - \url{http://va.mu/VSgR}. Essa dica
 irá lhe mostrar como adicionar um item ao menu visível a todos os
 usuários.
@@ -108,9 +114,14 @@ usuários.
 O Android \gls{sdk} já vem junto do Android Studio, sendo assim apenas
 instale as API's necessárias. Basta clicar em \texttt{Tools}
 $\rightarrow$ \texttt{Android} $\rightarrow$ \texttt{SDK Manager} e
-selecionar as versões 4.2 e 2.2.
+selecionar as versões 4.4 e 2.2.
 
 \subsection{Android Virtual Device (AVD)}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{img/preparando-ambiente/android-avd.png}
+    \caption{Android AVD}
+\end{figure}
 
 Vamos aproveitar e criar nosso \gls{avd} para testar pela primeira vez
 nosso emulador. Ainda no Android Studio clique em \texttt{Tools}
@@ -120,8 +131,8 @@ aba \texttt{Android Virtual Devices} clique em \texttt{New...}
 Dê um nome. Você pode usar qualquer nomenclatura, mas é interessante que
 tenha algo haver com a versão. Assim, caso você tenha que testar seu
 código em outras versões você poderá saber qual emulador utilizar. Por
-exemplo use \texttt{android-4.2}. Em \texttt{Target} escolha a versão,
-neste caso \texttt{Android 4.2 - API Level 17}. Pronto, apenas clique em
+exemplo use \texttt{android-4.4}. Em \texttt{Target} escolha a versão,
+neste caso \texttt{Android 4.4 (API 19)}. Pronto, apenas clique em
 \texttt{Create AVD}.
 
 \subsubsection{Dicas}
@@ -147,8 +158,7 @@ Dê um nome qualquer ao seu aplicativo, por exemplo
 \texttt{hello.android}. Note que o Android Studio tenta dar um nome ao
 seu pacote e ao diretório de arquivos a partir do nome que você digitou.
 Deixe como está. Em \texttt{Target SDK} é preciso escolher qual API
-vamos utilizar, em nosso caso escolha a
-\texttt{API 17: Android 4.2 (Jelly Bean)}. Em
+vamos utilizar, em nosso caso escolha a \texttt{API 19: Android 4.4}. Em
 \texttt{Minimum Required SDK} escolha a
 \texttt{API 8: Android 2.2 (Froyo)} indicando que a versão mínima é a
 \texttt{API 8}. Clique em \texttt{Next}.
@@ -159,9 +169,9 @@ a tela inicial do projeto, a opção \texttt{Blank Activity} vem
 selecionado por padrão, clique em \texttt{Next}. Por fim clique em
 \texttt{Finish}.
 
-Após isso basta executar o projeto usando \texttt{Shift + F10}. Se tudo
-tiver dado certo é possível ver no emulador sua primeira aplicação
-rodando.
+Após isso basta executar o projeto usando \texttt{Shift + F10} ou no
+menu \texttt{Run} $\rightarrow$ \texttt{Run 'main'}. Se tudo tiver dado
+certo é possível ver no emulador sua primeira aplicação rodando.
 
 \subsubsection{Dicas}
 
@@ -182,6 +192,9 @@ Faça o teste com alguns atalhos básicos:
 \item
   \textbf{\texttt{F8}} Liga/desliga a rede.
 \end{itemize}
+Para mais detalhes acesse
+\url{http://developer.android.com/tools/help/emulator.html#KeyMapping}
+
 Outro elemento essencial é o \texttt{LogCat}. Ele é responsável por
 mostrar as mensagens de \emph{log} do emulador. Caso você encontre
 problemas com seu código o \texttt{LogCat} será seu melhor aliado. Para

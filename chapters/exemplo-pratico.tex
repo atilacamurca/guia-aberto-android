@@ -3,10 +3,37 @@
 \section{Primeira aplicação - Contatos}
 
 Baseado em \ref{sssec:testando} Testando o ADT, crie um novo aplicativo
-chamado \textbf{Contatos}. Use contatos.app como o nome do pacote. Crie
-uma \texttt{Activity} inicial chamada \texttt{MainActivity} e um
+chamado \textbf{Contatos}. Use \texttt{guia.android.exemplo} como o nome
+da companhia. Siga os passos descritos nas figuras
+\ref{fig:new-project-1}, \ref{fig:new-project-2},
+\ref{fig:new-project-3} e \ref{fig:new-project-4} para criar uma
+\texttt{Activity} inicial chamada \texttt{MainActivity} e um
 \emph{layout} inicial chamado \texttt{main}. Depois clique em
 \texttt{Finish}.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.35]{img/exemplo-pratico/android-new-project-1.png}
+    \caption{Novo projeto, tela 1}
+    \label{fig:new-project-1}
+\end{figure}
+
+\begin{figure}[p]
+    \includegraphics[scale=0.35]{img/exemplo-pratico/android-new-project-2.png}
+    \caption{Novo projeto, tela 2}
+    \label{fig:new-project-2}
+\end{figure}
+
+\begin{figure}[p]
+    \includegraphics[scale=0.35]{img/exemplo-pratico/android-new-project-3.png}
+    \caption{Novo projeto, tela 3}
+    \label{fig:new-project-3}
+\end{figure}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.35]{img/exemplo-pratico/android-new-project-4.png}
+    \caption{Novo projeto, tela 4}
+    \label{fig:new-project-4}
+\end{figure}
 
 Este exemplo é bastante útil para aprendermos como funciona o Android.
 Você só poderá criar algo se você souber utilizar bem as ferramentas.
@@ -15,12 +42,20 @@ Você só poderá criar algo se você souber utilizar bem as ferramentas.
 
 Este é o arquivo que define nossa aplicação, mapeia as
 \texttt{Activity}'s, entre outras configurações. Ao finalizar a criação
-do projeto, inicialmente este arquivo deverá conter o seguinte conteúdo:
+do projeto, inicialmente este arquivo deverá conter o conteúdo descrito
+no Código-fonte \ref{code:android-manifest-1}:
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/AndroidManifest-1.xml }
   \caption{Projeto inicial [AndroidManifest.xml]}
+  \label{code:android-manifest-1}
 \end{listing}
+
+Devido a entrada do \gls{gradle} (ver
+\href{http://www.gradleware.com/android/gradle-the-new-android-build-system/}{Gradle:
+The New Android Build System}) a versão mínima e a versão alvo do SDK
+foram movidas para o arquivo \texttt{build.gradle}. Outros detalhes em
+\url{http://developer.android.com/sdk/installing/studio-build.html}.
 
 \subsection{Activity \label{ssec:act}}
 

@@ -69,24 +69,3 @@ Escreva o trecho abaixo e veja como é simples escrever e entender JSON.
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ js }{ source/json/documento-1.json }
   \caption{Exemplo arquivo JSON [documento.json]}
 \end{listing}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
