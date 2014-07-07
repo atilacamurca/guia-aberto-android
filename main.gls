@@ -10,7 +10,7 @@
 
 \gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas\relax
 \glodelim 
-		\glsnumformat{16}\delimN \glsnumformat{35}\delimT \gloskip \glogroupG
+		\glsnumformat{17}\delimN \glsnumformat{37}\delimT \gloskip \glogroupG
 
 \gloitem {\glosslabel{glo:Gradle}{Gradle}}is build automation evolved. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation or indeed anything else.\relax
 \glodelim 
@@ -19,6 +19,10 @@
 \gloitem {\glosslabel{glo:IDE}{IDE}}Integrated Development Environment (Ambiente de Desenvolvimento Integrado), são softwares que auxiliam no desenvolvimento de outros softwares. Ex. NetBeans IDE \url {http://netbeans.org/}, Eclipse IDE \url {http://www.eclipse.org/}\relax
 \glodelim 
 		\glsnumformat{1}\delimT \gloskip \glogroupL
+
+\gloitem {\glosslabel{glo:Layout Editor}{Layout Editor}}oferece um editor de layout avançado que permite você arrastar e soltar widgets e pré-visualizar sua interface (\url {https://developer.android.com/sdk/installing/studio-layout.html})\relax
+\glodelim 
+		\glsnumformat{13}\delimT 
 
 \gloitem {\glosslabel{glo:LTS}{LTS}}Long Term Support (Termo de Suporte a Longo Prazo), indica que uma versão do Ubuntu terá atualizações por um período de tempo maior, sendo assim você terá um ambiente estável e sempre atualizado\relax
 \glodelim 
@@ -30,5 +34,9 @@
 
 \gloitem {\glosslabel{glo:SDK}{SDK}}Software Development Kit (Kit de Desenvolvimento de Software)\relax
 \glodelim 
-		\glsnumformat{2}\delimT 
+		\glsnumformat{2}\delimT \gloskip \glogroupX
+
+\gloitem {\glosslabel{glo:XML}{XML}}é uma recomendação da W3C para gerar linguagens de marcação para necessidades especiais. É um dos subtipos da SGML capaz de descrever diversos tipos de dados. Seu propósito principal é a facilidade de compartilhamento de informações através da internet\relax
+\glodelim 
+		\glsnumformat{13}\delimT 
 \end{theglossary}

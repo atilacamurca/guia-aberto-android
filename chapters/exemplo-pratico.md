@@ -57,6 +57,10 @@ a versão mínima e a versão alvo do SDK foram movidas
 para o arquivo `build.gradle`. Outros detalhes em
 <http://developer.android.com/sdk/installing/studio-build.html>.
 
+#### Commit
+
+[d47028c8b7273f5a10c849c8b487f262360ded56](https://github.com/atilacamurca/guia-aberto-android-contatos/tree/d47028c8b7273f5a10c849c8b487f262360ded56)
+
 ### Activity \label{ssec:act}
 
 Não existe método `main` visível ao programador no Android. Ao invés disso
@@ -66,26 +70,41 @@ acima da linha \circled{09} a \circled{12}. Para nossa primeira `Activity`
 criaremos uma lista de contatos e um menu para criação de um novo contato.
 
 Para construir o *layout* inicial de nossa aplicação precisamos editar o
-arquivo `main.xml` localizado em `res/layout`.
+arquivo `activity_main.xml` localizado em `res/layout`.
 
-<!-- res/layout/main.xml -->
+<!-- TODO: renomear main-1.xml para activity_main-1.xml,
+arquivo já existe e deve ser atualizado -->
+
+<!-- res/layout/activity_main.xml -->
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/main-1.xml }
-  \caption{Layout principal [res/layout/main.xml]}
+  \caption{Layout principal [res/layout/activity_main.xml]}
 \end{listing}
 
-Deste momento em diante tenha em mente que os arquivos `xml` aqui
+O resultado pode ser visto na figura \ref{fig:activity-main-1}.
+
+\begin{figure}[h]
+	\center
+	\includegraphics[scale=0.3]{img/exemplo-pratico/activity_main-1.png}
+	\caption{Layout tela principal}
+    \label{fig:activity-main-1}
+\end{figure}
+
+#### Commit
+
+[5e31fe9e7c9b15596ae6bfe1ca857d92544290a2](https://github.com/atilacamurca/guia-aberto-android-contatos/tree/5e31fe9e7c9b15596ae6bfe1ca857d92544290a2)
+
+Deste momento em diante tenha em mente que os arquivos \gls{xml} aqui
 descritos são apenas para você poder comparar e ver se não esqueceu de
-nada. Todos os *layout*'s devem ser criados usando a ferramenta ADT.
+nada. Todos os *layout*'s devem ser criados usando o \gls{layout-editor}.
 Você irá notar que ao abrir o `xml` uma janela de *layout* aparecerá.
 Para visualizar o `xml` ou o *layout* gráfico basta utilizar a aba
 inferior esquerda.
 
-Por fim, temos o menu. Clique com o botão direito do *mouse* em seu
-projeto e `New` $\rightarrow$ `Other...` ou `Ctrl + N`. Procure por
-`Android XML File`. Em `Resource Type` escolha a opção `Menu`. Chame-o
-de `main_menu.xml`.
+Por fim, temos o menu. Clique com o botão direito do *mouse* no diretório
+`res/menu` $\rightarrow$ `New` $\rightarrow$ `Menu resource file`.
+Chame-o de `main_menu.xml`.
 
 <!-- res/menu/main_menu.xml -->
 
@@ -94,11 +113,31 @@ de `main_menu.xml`.
   \caption{Menu principal [res/menu/main\b{ }menu.xml]}
 \end{listing}
 
+### Commit
+
+[a49787ebc586dca2db9fa3adc92b134453258354](https://github.com/atilacamurca/guia-aberto-android-contatos/tree/a49787ebc586dca2db9fa3adc92b134453258354)
+
+\begin{figure}[h]
+	\includegraphics[scale=0.3]{img/exemplo-pratico/main_menu-1.png}
+	\caption{Menu principal}
+\end{figure}
+
 Pronto, já temos nosso layout. Compile o projeto e vamos a próxima
 iteração.
 
 #### Convenção de nomes para ícones \label{sssec:nomeicones}
 
+Na edição 2 deste guia, falamos sobre o uso de ícones no menu e seus
+_namespaces_. Mas desde a versão 3.0, o Android introduziu o conceito
+de **Action Bar**. Isso fez com que o uso de ícones no menu sumisse.
+
+* <http://android-developers.blogspot.in/2012/01/say-goodbye-to-menu-button.html>
+* <http://developer.android.com/guide/topics/ui/actionbar.html>
+
+Mesmo assim vou manter a tabela com as convenções adotadas pelo Android
+para o prefixo dos ícones:
+
+<!--
 Observe que o ícone utilizado no menu vem junto com o SDK do Android.
 Você pode visualizar os ícones em
 `SDK_INSTALL/plataforms/android-8/data/res/drawable-hdpi` (substitua
@@ -106,6 +145,7 @@ Você pode visualizar os ícones em
 caso `usr/local/lib/android-sdk`, \ref{ssec:sdk}). Note que há *namespaces*
 ou prefixos em cada um dos ícones. O Android recomenda a seguinte
 convenção:
+-->
 
 -----------------------------------------------------------------------
 **Tipo de Recurso**  **Prefixo**        **Exemplo**
@@ -127,7 +167,7 @@ Table: Convenção para nome dos ícones
 
 Note que você não é obrigado a utilizar os prefixos citados acima, isto
 é apenas uma convenção. Veja mais detalhes em
-<http://developer.android.com/guide/practices/ui_guidelines/icon_design.html>.
+<http://developer.android.com/design/style/iconography.html#action-bar>.
 
 Abra o arquivo `MainActivity.java` e vá ao método `onCreate`. Defina o
 *layout* como sendo nosso `main.xml`. Para isso adicione o *layout*
@@ -139,11 +179,12 @@ Abra o arquivo `MainActivity.java` e vá ao método `onCreate`. Defina o
   \caption{Definir layout [MainActivity.java]}
 \end{listing}
 
+[a49787ebc586dca2db9fa3adc92b134453258354](https://github.com/atilacamurca/guia-aberto-android-contatos/tree/a49787ebc586dca2db9fa3adc92b134453258354)
+
 ##### Cuidado \label{par:r}
 
 no ambiente Android temos uma classe chamada `R`. Ela existe tanto na
-biblioteca do Android como em cada projeto. Nesse caso faça o *import*
-da classe `contatos.app.R`. A classe `android.R` é utilizada em outras
+biblioteca do Android como em cada projeto. A classe `android.R` é utilizada em outras
 situações, onde códigos pré-prontos foram disponibilizados pela equipe
 do Android.
 
@@ -158,6 +199,10 @@ Vamos ao código:
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-2.java }
   \caption{Criando o menu [MainActivity.java]}
 \end{listing}
+
+#### Commit
+
+[18c59c4a828c40f0877f0adef352b1afe6c3412f](https://github.com/atilacamurca/guia-aberto-android-contatos/tree/18c59c4a828c40f0877f0adef352b1afe6c3412f)
 
 ### Formulários
 

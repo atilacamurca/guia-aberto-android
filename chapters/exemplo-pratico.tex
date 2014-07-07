@@ -57,6 +57,10 @@ The New Android Build System}) a versão mínima e a versão alvo do SDK
 foram movidas para o arquivo \texttt{build.gradle}. Outros detalhes em
 \url{http://developer.android.com/sdk/installing/studio-build.html}.
 
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/d47028c8b7273f5a10c849c8b487f262360ded56}{d47028c8b7273f5a10c849c8b487f262360ded56}
+
 \subsection{Activity \label{ssec:act}}
 
 Não existe método \texttt{main} visível ao programador no Android. Ao
@@ -67,43 +71,70 @@ primeira \texttt{Activity} criaremos uma lista de contatos e um menu
 para criação de um novo contato.
 
 Para construir o \emph{layout} inicial de nossa aplicação precisamos
-editar o arquivo \texttt{main.xml} localizado em \texttt{res/layout}.
+editar o arquivo \texttt{activity\_main.xml} localizado em
+\texttt{res/layout}.
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/main-1.xml }
-  \caption{Layout principal [res/layout/main.xml]}
+  \caption{Layout principal [res/layout/activity_main.xml]}
 \end{listing}
 
-Deste momento em diante tenha em mente que os arquivos \texttt{xml} aqui
+O resultado pode ser visto na figura \ref{fig:activity-main-1}.
+
+\begin{figure}[h]
+    \center
+    \includegraphics[scale=0.3]{img/exemplo-pratico/activity_main-1.png}
+    \caption{Layout tela principal}
+    \label{fig:activity-main-1}
+\end{figure}
+
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/5e31fe9e7c9b15596ae6bfe1ca857d92544290a2}{5e31fe9e7c9b15596ae6bfe1ca857d92544290a2}
+
+Deste momento em diante tenha em mente que os arquivos \gls{xml} aqui
 descritos são apenas para você poder comparar e ver se não esqueceu de
-nada. Todos os \emph{layout}'s devem ser criados usando a ferramenta
-ADT. Você irá notar que ao abrir o \texttt{xml} uma janela de
-\emph{layout} aparecerá. Para visualizar o \texttt{xml} ou o
+nada. Todos os \emph{layout}'s devem ser criados usando o
+\gls{layout-editor}. Você irá notar que ao abrir o \texttt{xml} uma
+janela de \emph{layout} aparecerá. Para visualizar o \texttt{xml} ou o
 \emph{layout} gráfico basta utilizar a aba inferior esquerda.
 
-Por fim, temos o menu. Clique com o botão direito do \emph{mouse} em seu
-projeto e \texttt{New} $\rightarrow$ \texttt{Other...} ou
-\texttt{Ctrl + N}. Procure por \texttt{Android XML File}. Em
-\texttt{Resource Type} escolha a opção \texttt{Menu}. Chame-o de
-\texttt{main\_menu.xml}.
+Por fim, temos o menu. Clique com o botão direito do \emph{mouse} no
+diretório \texttt{res/menu} $\rightarrow$ \texttt{New} $\rightarrow$
+\texttt{Menu resource file}. Chame-o de \texttt{main\_menu.xml}.
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/main_menu-1.xml }
   \caption{Menu principal [res/menu/main\b{ }menu.xml]}
 \end{listing}
 
+\subsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/a49787ebc586dca2db9fa3adc92b134453258354}{a49787ebc586dca2db9fa3adc92b134453258354}
+
+\begin{figure}[h]
+    \includegraphics[scale=0.3]{img/exemplo-pratico/main_menu-1.png}
+    \caption{Menu principal}
+\end{figure}
+
 Pronto, já temos nosso layout. Compile o projeto e vamos a próxima
 iteração.
 
 \subsubsection{Convenção de nomes para ícones \label{sssec:nomeicones}}
 
-Observe que o ícone utilizado no menu vem junto com o SDK do Android.
-Você pode visualizar os ícones em
-\texttt{SDK\_INSTALL/plataforms/android-8/data/res/drawable-hdpi}
-(substitua \texttt{SDK\_INSTALL} pelo diretório de instalação do SDK do
-Android, no nosso caso \texttt{usr/local/lib/android-sdk},
-\ref{ssec:sdk}). Note que há \emph{namespaces} ou prefixos em cada um
-dos ícones. O Android recomenda a seguinte convenção:
+Na edição 2 deste guia, falamos sobre o uso de ícones no menu e seus
+\emph{namespaces}. Mas desde a versão 3.0, o Android introduziu o
+conceito de \textbf{Action Bar}. Isso fez com que o uso de ícones no
+menu sumisse.
+
+\begin{itemize}
+\item
+  \url{http://android-developers.blogspot.in/2012/01/say-goodbye-to-menu-button.html}
+\item
+  \url{http://developer.android.com/guide/topics/ui/actionbar.html}
+\end{itemize}
+Mesmo assim vou manter a tabela com as convenções adotadas pelo Android
+para o prefixo dos ícones:
 
 \ctable[caption = Convenção para nome dos ícones,
 pos = H, center, botcap]{lll}
@@ -171,7 +202,7 @@ Dialog icons
 
 Note que você não é obrigado a utilizar os prefixos citados acima, isto
 é apenas uma convenção. Veja mais detalhes em
-\url{http://developer.android.com/guide/practices/ui_guidelines/icon_design.html}.
+\url{http://developer.android.com/design/style/iconography.html#action-bar}.
 
 Abra o arquivo \texttt{MainActivity.java} e vá ao método
 \texttt{onCreate}. Defina o \emph{layout} como sendo nosso
@@ -183,11 +214,12 @@ final do método:
   \caption{Definir layout [MainActivity.java]}
 \end{listing}
 
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/a49787ebc586dca2db9fa3adc92b134453258354}{a49787ebc586dca2db9fa3adc92b134453258354}
+
 \paragraph{Cuidado \label{par:r}}
 
 no ambiente Android temos uma classe chamada \texttt{R}. Ela existe
-tanto na biblioteca do Android como em cada projeto. Nesse caso faça o
-\emph{import} da classe \texttt{contatos.app.R}. A classe
+tanto na biblioteca do Android como em cada projeto. A classe
 \texttt{android.R} é utilizada em outras situações, onde códigos
 pré-prontos foram disponibilizados pela equipe do Android.
 
@@ -200,6 +232,10 @@ respectivamente. Vamos ao código:
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-2.java }
   \caption{Criando o menu [MainActivity.java]}
 \end{listing}
+
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/18c59c4a828c40f0877f0adef352b1afe6c3412f}{18c59c4a828c40f0877f0adef352b1afe6c3412f}
 
 \subsection{Formulários}
 
