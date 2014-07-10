@@ -20,3 +20,4 @@ Você pode baixar o código-fonte deste guia em\
 Visite também a página do projeto\
 <http://atilacamurca.github.com/guia-aberto-android/> e verifique se há
 atualizações.
+#

@@ -1,1 +1,4 @@
-<activity android:name=".view.SalvarActivity"></activity>
+<activity
+   android:name=".view.SalvarActivity"
+   android:label="@string/title_activity_salvar" >
+</activity>

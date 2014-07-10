@@ -156,5 +156,3 @@ da mesma forma que os `Activity`’s.
 Vamos voltar a implementar em cima da nossa aplicação **contatos** e
 criar um `Service` que irá sincronizar os dados do celular com o
 servidor.
-
-<!-- http://www.felipesilveira.com.br/2010/05/content-providers/ -->

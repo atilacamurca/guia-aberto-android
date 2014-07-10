@@ -30,7 +30,7 @@ da companhia. Siga os passos descritos nas figuras
 \end{figure}
 
 \begin{figure}[h]
-    \includegraphics[scale=0.35]{img/exemplo-pratico/android-new-project-4.png}
+    \includegraphics[scale=0.32]{img/exemplo-pratico/android-new-project-4.png}
     \caption{Novo projeto, tela 4}
     \label{fig:new-project-4}
 \end{figure}
@@ -57,9 +57,16 @@ The New Android Build System}) a versão mínima e a versão alvo do SDK
 foram movidas para o arquivo \texttt{build.gradle}. Outros detalhes em
 \url{http://developer.android.com/sdk/installing/studio-build.html}.
 
+\subsubsection{Links para ver o código online}
+
+Desse ponto em diante você verá a cada código mostrado um link para o
+código online, no \gls{github}. Se você está na versão eletrônica basta
+clicar no link. Se você está na versão impressa acesse a página web
+\url{https://github.com/atilacamurca/guia-aberto-android-contatos/commits/master}.
+
 \subsubsection{Commit}
 
-\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/d47028c8b7273f5a10c849c8b487f262360ded56}{d47028c8b7273f5a10c849c8b487f262360ded56}
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/d47028c8b7273f5a10c849c8b487f262360ded56}{d47028c8b7273f5a10c849c8b487f262360ded56}
 
 \subsection{Activity \label{ssec:act}}
 
@@ -90,7 +97,7 @@ O resultado pode ser visto na figura \ref{fig:activity-main-1}.
 
 \subsubsection{Commit}
 
-\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/5e31fe9e7c9b15596ae6bfe1ca857d92544290a2}{5e31fe9e7c9b15596ae6bfe1ca857d92544290a2}
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/5e31fe9e7c9b15596ae6bfe1ca857d92544290a2}{5e31fe9e7c9b15596ae6bfe1ca857d92544290a2}
 
 Deste momento em diante tenha em mente que os arquivos \gls{xml} aqui
 descritos são apenas para você poder comparar e ver se não esqueceu de
@@ -108,9 +115,9 @@ diretório \texttt{res/menu} $\rightarrow$ \texttt{New} $\rightarrow$
   \caption{Menu principal [res/menu/main\b{ }menu.xml]}
 \end{listing}
 
-\subsection{Commit}
+\subsubsection{Commit}
 
-\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/a49787ebc586dca2db9fa3adc92b134453258354}{a49787ebc586dca2db9fa3adc92b134453258354}
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/a49787ebc586dca2db9fa3adc92b134453258354}{a49787ebc586dca2db9fa3adc92b134453258354}
 
 \begin{figure}[h]
     \includegraphics[scale=0.3]{img/exemplo-pratico/main_menu-1.png}
@@ -214,7 +221,9 @@ final do método:
   \caption{Definir layout [MainActivity.java]}
 \end{listing}
 
-\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/a49787ebc586dca2db9fa3adc92b134453258354}{a49787ebc586dca2db9fa3adc92b134453258354}
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/a49787ebc586dca2db9fa3adc92b134453258354}{a49787ebc586dca2db9fa3adc92b134453258354}
 
 \paragraph{Cuidado \label{par:r}}
 
@@ -235,17 +244,24 @@ respectivamente. Vamos ao código:
 
 \subsubsection{Commit}
 
-\href{https://github.com/atilacamurca/guia-aberto-android-contatos/tree/18c59c4a828c40f0877f0adef352b1afe6c3412f}{18c59c4a828c40f0877f0adef352b1afe6c3412f}
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/18c59c4a828c40f0877f0adef352b1afe6c3412f}{18c59c4a828c40f0877f0adef352b1afe6c3412f}
 
 \subsection{Formulários}
 
 Agora vamos criar nosso formulário para criação e edição de contatos.
 Começaremos pelo \emph{layout}. Crie um arquivo \texttt{xml} em
-\texttt{res/layout} chamado \texttt{salvar.xml}.
+\texttt{res/layout} chamado \texttt{activity\_salvar.xml}.
 
 Existem alguns pontos importantes para este trecho de código. Começando
-pelo \emph{layout} inicial, onde usaremos \texttt{TableLayout}. Esse
-\emph{layout} é ideal para telas com estilo tabela.
+pelo \emph{layout} inicial, onde usaremos \texttt{TableLayout} (dentro
+de um \texttt{RelativeLayout}). Esse \emph{layout} é ideal para telas
+com estilo tabela.
+
+\begin{figure}[h]
+    \center
+    \includegraphics[scale=0.6]{img/exemplo-pratico/new-layout-salvar.png}
+    \caption{Novo layout, Root element com busca de layouts disponíveis}
+\end{figure}
 
 Um detalhe importante para observarmos neste \emph{layout} é que ele
 possui o atributo \texttt{stretchColumns} com valor \texttt{1}. Isso
@@ -256,9 +272,33 @@ visualizar as mudanças você pode tentar usar outros valores como
 \texttt{*} que fará com que todas as células tenham o mesmo tamanho.
 
 \begin{listing}[H]
-  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/salvar-1.xml }
-  \caption{Formulário principal [res/layout/salvar.xml]}
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ xml }{ source/activity_salvar-1.xml }
+  \caption{Formulário principal [res/layout/activity_salvar.xml]}
 \end{listing}
+
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/f130f18bcdab8638641d42c32557ffffa2e1b0ba}{f130f18bcdab8638641d42c32557ffffa2e1b0ba}
+
+\bigskip
+
+Atentem para a linha \circled{23} do código acima. Nele podemos ver o
+uso do indicador do tipo de dados que vamos entrar, no caso
+\texttt{textPersonName}. Isso significa que o teclado irá se comportar
+de forma a ajudar o usuário, fazendo com que a primeira letra seja
+digitada sempre em maiúsculo. Sabendo disso use o mesmo raciocínio para
+os campos Telefone e E-mail, usando o valor \texttt{phone} e
+\texttt{textEmailAddress} em \texttt{android:inputType},
+respectivamente.
+
+A lista completa pode ser vista em
+\url{http://developer.android.com/reference/android/widget/TextView.html#attr_android:inputType}.
+
+\begin{figure}[H]
+    \center
+    \includegraphics[scale=0.3]{img/exemplo-pratico/activity_salvar-1.png}
+    \caption{Layout tela Salvar Contato}
+\end{figure}
 
 Crie uma nova \texttt{Activity} chamada \texttt{SalvarActivity} dentro
 de \texttt{contatos.app.view}. Para irmos de uma \texttt{Activity} para
@@ -273,6 +313,12 @@ classe \texttt{MainActivity}:
   \caption{Mudando de Activity [MainActivity.java]}
 \end{listing}
 
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/ec5b0f1913e300a91bde424f596cc15e25b9ef18}{ec5b0f1913e300a91bde424f596cc15e25b9ef18}
+
+\medskip
+
 Veremos agora como manipular \texttt{EditText}'s, que representam os
 campos de entrada de dados. Abra o \texttt{SalvarActivity} e adicione o
 método carregar e crie atributos para guardar os \texttt{EditText}'s:
@@ -281,6 +327,12 @@ método carregar e crie atributos para guardar os \texttt{EditText}'s:
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/SalvarActivity-1.java }
   \caption{Utilizando EditText's [SalvarActivity.java]}
 \end{listing}
+
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/16671ee3a0afeec91431deb656aeaab906d4abb8}{16671ee3a0afeec91431deb656aeaab906d4abb8}
+
+\bigskip
 
 Para que a \texttt{Activity} funcione precisamos mapeá-la no arquivo
 \texttt{AndroidManifest.xml}. Adicione o conteúdo abaixo entre as
@@ -291,8 +343,9 @@ Para que a \texttt{Activity} funcione precisamos mapeá-la no arquivo
   \caption{Mapear SalvarActivity [AndroidManifest.xml]}
 \end{listing}
 
-Utilize sempre o ADT e apenas confira se o arquivo está da maneira
-correta.
+\subsubsection{Commit}
+
+\href{https://github.com/atilacamurca/guia-aberto-android-contatos/commit/fb4b54a586e6669ab4974cbf7d38edb5b72eb1a4}{fb4b54a586e6669ab4974cbf7d38edb5b72eb1a4}
 
 \subsection{Construindo o Model da aplicação \label{ssec:model}}
 

@@ -10,7 +10,11 @@
 
 \gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas\relax
 \glodelim 
-		\glsnumformat{17}\delimN \glsnumformat{37}\delimT \gloskip \glogroupG
+		\glsnumformat{18}\delimN \glsnumformat{37}\delimT \gloskip \glogroupG
+
+\gloitem {\glosslabel{glo:Github}{Github}}é um Serviço de Web Hosting Compartilhado para projetos que usam o controle de versionamento Git. Para mais detalhes acesse \url {https://github.com/}\relax
+\glodelim 
+		\glsnumformat{11}\delimT 
 
 \gloitem {\glosslabel{glo:Gradle}{Gradle}}is build automation evolved. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation or indeed anything else.\relax
 \glodelim 
