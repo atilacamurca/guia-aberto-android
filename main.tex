@@ -41,6 +41,16 @@
 \usepackage{float} % provides the H option for float placement
 % -- table
 
+% -- enumerate
+% Redefine labelwidth for lists; otherwise, the enumerate package will cause
+% markers to extend beyond the left margin.
+\makeatletter\AtBeginDocument{%
+  \renewcommand{\@listi}
+    {\setlength{\labelwidth}{4em}}
+}\makeatother
+\usepackage{enumerate}
+% -- enumerate
+
 \usepackage[hmargin=3cm,vmargin=3.5cm]{geometry}
 
 \renewcommand\listoflistingscaption{Lista de Códigos-fonte}
@@ -118,6 +128,8 @@ conversação entre linguagens diferentes (\url{http://www.json.org/json-pt.html
 \storeglosentry{layout-editor}{name=Layout Editor,description={oferece um editor de layout avançado que permite você arrastar e soltar widgets e pré-visualizar sua interface (\url{https://developer.android.com/sdk/installing/studio-layout.html})}}
 \storeglosentry{xml}{name=XML,description={é uma recomendação da W3C para gerar linguagens de marcação para necessidades especiais. É um dos subtipos da SGML capaz de descrever diversos tipos de dados. Seu propósito principal é a facilidade de compartilhamento de informações através da internet}}
 \storeglosentry{github}{name=Github,description={é um Serviço de Web Hosting Compartilhado para projetos que usam o controle de versionamento Git. Para mais detalhes acesse \url{https://github.com/}}}
+\storeglosentry{uri}{name=URI,description={é um Identificador Uniforme de Recursos (Uniform Resource Identifier), é uma cadeia de carateres compacta usada para identificar ou denominar um recurso na Internet ou rede local. Mais detalhes em \url{http://www.faqs.org/rfcs/rfc2396.html}}}
+\storeglosentry{url}{name=URL,description={é um Localizador Uniforme de Recursos (Uniform Resource Locator), é um endereço de um recurso disponível em uma rede, seja a rede internet ou intranet. É derivado do URI. Mais detalhes em \url{http://www.faqs.org/rfcs/rfc1738.html}}}
 % -- glossary
 
 \begin{document}

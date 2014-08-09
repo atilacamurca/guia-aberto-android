@@ -10,7 +10,7 @@
 
 \gloitem {\glosslabel{glo:DDL}{DDL}}Data Definition Language (Linguagem de Definição de Dados), é a parte do SQL que permite que as tabelas do banco de dados sejam criadas, alteradas ou removidas. Ela também define índices (chaves), especifica ligações entre tabelas, além de impor restrições entre tabelas\relax
 \glodelim 
-		\glsnumformat{18}\delimN \glsnumformat{37}\delimT \gloskip \glogroupG
+		\glsnumformat{18\delimN 19}\delimN \glsnumformat{39}\delimT \gloskip \glogroupG
 
 \gloitem {\glosslabel{glo:Github}{Github}}é um Serviço de Web Hosting Compartilhado para projetos que usam o controle de versionamento Git. Para mais detalhes acesse \url {https://github.com/}\relax
 \glodelim 
@@ -18,7 +18,11 @@
 
 \gloitem {\glosslabel{glo:Gradle}{Gradle}}is build automation evolved. Gradle can automate the building, testing, publishing, deployment and more of software packages or other types of projects such as generated static websites, generated documentation or indeed anything else.\relax
 \glodelim 
-		\glsnumformat{11}\delimT \gloskip \glogroupI
+		\glsnumformat{11}\delimT \gloskip \glogroupH
+
+\gloitem {\glosslabel{glo:HTTP}{HTTP}}Hypertext Transfer Protocol (Protocolo de Transferência de Hipertexto), protocolo a nível de aplicação para sistemas de informações distribuídos e colaborativos. É utilizado pela World-Wide Web (WWW) desde 1990 (\url {http://www.w3.org/Protocols/rfc2616/rfc2616.html}).\relax
+\glodelim 
+		\glsnumformat{21}\delimT \gloskip \glogroupI
 
 \gloitem {\glosslabel{glo:IDE}{IDE}}Integrated Development Environment (Ambiente de Desenvolvimento Integrado), são softwares que auxiliam no desenvolvimento de outros softwares. Ex. NetBeans IDE \url {http://netbeans.org/}, Eclipse IDE \url {http://www.eclipse.org/}\relax
 \glodelim 
@@ -38,7 +42,15 @@
 
 \gloitem {\glosslabel{glo:SDK}{SDK}}Software Development Kit (Kit de Desenvolvimento de Software)\relax
 \glodelim 
-		\glsnumformat{2}\delimT \gloskip \glogroupX
+		\glsnumformat{2}\delimT \gloskip \glogroupU
+
+\gloitem {\glosslabel{glo:URI}{URI}}é um Identificador Uniforme de Recursos (Uniform Resource Identifier), é uma cadeia de carateres compacta usada para identificar ou denominar um recurso na Internet ou rede local. Mais detalhes em \url {http://www.faqs.org/rfcs/rfc2396.html}\relax
+\glodelim 
+		\glsnumformat{21}\delimT 
+
+\gloitem {\glosslabel{glo:URL}{URL}}é um Localizador Uniforme de Recursos (Uniform Resource Locator), é um endereço de um recurso disponível em uma rede, seja a rede internet ou intranet. É derivado do URI. Mais detalhes em \url {http://www.faqs.org/rfcs/rfc1738.html}\relax
+\glodelim 
+		\glsnumformat{21}\delimT \gloskip \glogroupX
 
 \gloitem {\glosslabel{glo:XML}{XML}}é uma recomendação da W3C para gerar linguagens de marcação para necessidades especiais. É um dos subtipos da SGML capaz de descrever diversos tipos de dados. Seu propósito principal é a facilidade de compartilhamento de informações através da internet\relax
 \glodelim 

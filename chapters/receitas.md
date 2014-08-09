@@ -279,7 +279,7 @@ ainda vamos aprender a utilizar um `Spinner`, também conhecido como
 *combo box*. Por último, e não menos importante, usaremos as
 preferências para tornar padrão um valor de nosso `Spinner`.
 
-### Atualizando colunas de uma tabela
+### Atualizando colunas de uma tabela \label{sssec:update-ddl}
 
 Como visto em \ref{ssec:model}, a classe `SQLiteOpenHelper` obriga-nos a
 implementar os métodos `onCreate` e `onUpgrade`. Neste ponto será necessário

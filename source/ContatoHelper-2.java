@@ -1,3 +1,3 @@
-public void criar(ContentValues values) {
-	getWritableDatabase().insert("contato", "telefone", values);
+public long criar(ContentValues values) {
+	return getWritableDatabase().insert(TABLE_NAME, ContatoColumns.NOME, values);
 }

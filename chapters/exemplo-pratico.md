@@ -270,7 +270,7 @@ A lista completa pode ser vista em
 \end{figure}
 
 Crie uma nova `Activity` chamada `SalvarActivity` dentro de
-`contatos.app.view`. Para irmos de uma `Activity` para outra precisamos
+`exemplo.android.guia.contatos.view`. Para irmos de uma `Activity` para outra precisamos
 de um `Intent`. Um de seus construtores recebe como parâmetros a
 instância da classe em que estamos, sendo que ela deve implementar a
 interface `Context` e o nome da classe a qual deve ser mostrada. Veja
@@ -328,23 +328,83 @@ provê suporte a bancos de dados [Sqlite](http://sqlite.org/) por padrão. Qualq
 dados que você criar será acessível pelo nome por qualquer classe na sua
 aplicação, mas não fora dela.
 
-Crie uma classe chamada `ContatoHelper` em `contatos.app.model` que
-extende de `SQLiteOpenHelper`. Essa classe será capaz de ler e escrever
+Crie uma classe abstrata chamada `AbstractHelper` em `exemplo.android.guia.contatos.model` que
+extende de `SQLiteOpenHelper`. Qualquer outra classe que necessite acesso ao banco de
+dados agora deve estender de `AbstractHelper` e utilizar os métodos `getReadableDatabase()` e
+`getWritableDatabase()` para ler e escrever no banco de dados, respectivamente.
+
+<!--
+Essa classe será capaz de ler e escrever
 no banco de dados graças aos métodos `getReadableDatabase()` e
 `getWritableDatabase()`, respectivamente.
+-->
 
 A princípio temos que criar um construtor passando como parâmetros o
 nome do banco de dados e a versão da \gls{ddl} (*Data Definition Language*).
 Logo em seguida precisamos implementar os métodos `onCreate`, no qual
 iremos criar as tabelas e `onUpdate`, caso tenhamos que alterar alguma
-tabela em versões futuras do aplicativo.
+tabela em versões futuras do aplicativo. Mais detalhes sobre isso em
+\ref{sssec:update-ddl}.
+
+<!-- AbstractHelper.java -->
+
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/AbstractHelper-1.java }
+  \caption{Helper da aplicação [AbstractHelper.java]}
+\end{listing}
+
+#### Como funciona o SQLiteOpenHelper?
+
+Ao estender de `SQLiteOpenHelper` somos obrigados a chamar seu construtor e passar
+alguns parâmetros para a super classe. Vamos indentificá-los:
+
+* **context**: significa quem tem acesso ao banco de dados, ou seja, somente sua
+	aplicação, como ela é a única que pode criar essa classe, ela é a única que
+    tem o direito de acessar.
+* **name**: nome do banco de dados a ser criado fisicamente no Android.
+* **factory** $^1$: fábrica que cria a instância da classe Cursor, que serve para acessar
+	os dados após fazer queries. No nosso caso passamos `null`. Isso se deve pelo
+    fato de que queremos usar o `Factory` padrão do Android. Caso queiramos criar
+    um Cursor especializado ai sim teremos que nos preocupar com esse parâmetro.
+* **version**: versão do banco de dados, usado para fazer _upgrade_ ou _downgrade_
+	da \gls{ddl}.
+
+1. <http://stackoverflow.com/a/11643417/1152679>
+
+Outros detalhes em
+<http://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html>.
+
+<!--
+https://plus.google.com/+GiacomoBresciani/posts/bSTeoVBjM4m
+http://android-developers.blogspot.com.br/2010/05/be-careful-with-content-providers.html
+http://developer.android.com/guide/topics/providers/content-provider-basics.html
+http://www.vogella.com/tutorials/AndroidSQLite/article.html#sqliteoverview_sqliteopenhelper
+http://www.androidhive.info/2011/11/android-sqlite-database-tutorial/
+-->
+
+Tudo que temos a fazer a partir deste ponto para acessar o banco de dados
+é criar classes que estendam de `AbstractHelper`, no caso a primeira a ser
+criada é `ContatoHelper`.
 
 <!-- ContatoHelper.java -->
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/ContatoHelper-1.java }
-  \caption{Helper da aplicação [ContatoHelper.java]}
+  \caption{Helper para acessar tabela contato [ContatoHelper.java]}
 \end{listing}
+
+Devido a classe `AbstractHelper` ser abstrata, é possível repassar a tarefa de
+implementar os método `onCreate` e `onUpdate` para as classes filhas. Dessa forma
+podemos tratar muito melhor a criação das tabelas referentes a classe em questão,
+como podemos ver nas linhas \circled{10} a \circled{29}.
+
+Também vemos uma classe interna que implementa `BaseColumns`. Ela é uma interface
+bem simples contendo apenas dois atributos, `_id` e `_count`. Entretanto é uma forma
+bem expressiva de definir as colunas de sua tabela e usá-las para fazer queries,
+entre outras coisas.
+
+A documentação pode ser encontrada em
+<http://developer.android.com/reference/android/provider/BaseColumns.html>.
 
 Para a iteração de criação de um novo contato, ainda em `ContatoHelper`
 vamos adicionar um método `criar`. Faça:
@@ -356,6 +416,42 @@ vamos adicionar um método `criar`. Faça:
   \caption{Criar novo contato [ContatoHelper.java]}
 \end{listing}
 
+#### ContentProvider
+
+Um `ContentProvider` é uma maneira universal de acesso aos dados, sejam eles em
+banco de dados, arquivo, rede (_stream_), etc. Isso quer dizer que eles fazem uma
+abstração de como esses dados são acessados, além de permitir que outros aplicativos
+possam fazer uso das informações obtidas na sua aplicação.
+
+Vamos por partes. O `ContentProvider` é uma classe do Android que tem o objetivo de encapsular
+os dados e provê uma interface única para que outros aplicativos, inclusive o seu, tenham acesso
+a esses dados. Entretanto ele somente é necessário se você precisa compartilhar os dados
+entre outros aplicativos.
+
+Seu funcionamento é bem simples, um `ContentProvider` é identificado por um \gls{uri},
+ou seja, um valor único que o representa. Um exemplo bem conhecido é a forma de acessar
+dados da internet através de \gls{http}, onde utilizamos uma \gls{url}. Uma URL é um
+conjunto específico de URI. Ao ser realizada uma requisição a um determinado URI para
+um `ContentResolver`, ele verifica quem é responsável por responder pelo URI e repassa
+a requisição. Uma URI genérica é escrita na forma: `<scheme>://<authority><path>?<query>`.
+
+Os principais métodos a serem implementados são:
+
+* `onCreate()`: inicializa o _provider_;
+* `query(Uri, String[], String, String[], String)`: realiza busca;
+* `insert(Uri, ContentValues)`: insere dados;
+* `update(Uri, ContentValues, String, String[])`: atualiza dados;
+* `delete(Uri, String, String[])`: deleta dados;
+* `getType(Uri)`: obtém o _MIME type_ dos dados.
+
+Mais detalhes em:
+
+* <http://developer.android.com/reference/android/content/ContentProvider.html>
+* <http://developer.android.com/guide/topics/providers/content-providers.html>
+* <http://www.faqs.org/rfcs/rfc2396.html>
+* <http://www.faqs.org/rfcs/rfc1738.html>
+
+<!-- TODO: mudar para a chamada do ContentProvider -->
 Agora temos que fazer a chamada do método criar da classe
 `ContatoHelper` em `SalvarActivity`. Para isso temos que criar uma
 instância de `ContatoHelper`, adicionar o botão salvar e adicionar um

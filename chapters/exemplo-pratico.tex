@@ -301,12 +301,12 @@ A lista completa pode ser vista em
 \end{figure}
 
 Crie uma nova \texttt{Activity} chamada \texttt{SalvarActivity} dentro
-de \texttt{contatos.app.view}. Para irmos de uma \texttt{Activity} para
-outra precisamos de um \texttt{Intent}. Um de seus construtores recebe
-como parâmetros a instância da classe em que estamos, sendo que ela deve
-implementar a interface \texttt{Context} e o nome da classe a qual deve
-ser mostrada. Veja como implementar o método \texttt{irParaSalvar} da
-classe \texttt{MainActivity}:
+de \texttt{exemplo.android.guia.contatos.view}. Para irmos de uma
+\texttt{Activity} para outra precisamos de um \texttt{Intent}. Um de
+seus construtores recebe como parâmetros a instância da classe em que
+estamos, sendo que ela deve implementar a interface \texttt{Context} e o
+nome da classe a qual deve ser mostrada. Veja como implementar o método
+\texttt{irParaSalvar} da classe \texttt{MainActivity}:
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/MainActivity-3.java }
@@ -355,10 +355,12 @@ Android provê suporte a bancos de dados
 que você criar será acessível pelo nome por qualquer classe na sua
 aplicação, mas não fora dela.
 
-Crie uma classe chamada \texttt{ContatoHelper} em
-\texttt{contatos.app.model} que extende de \texttt{SQLiteOpenHelper}.
-Essa classe será capaz de ler e escrever no banco de dados graças aos
-métodos \texttt{getReadableDatabase()} e \texttt{getWritableDatabase()},
+Crie uma classe abstrata chamada \texttt{AbstractHelper} em
+\texttt{exemplo.android.guia.contatos.model} que extende de
+\texttt{SQLiteOpenHelper}. Qualquer outra classe que necessite acesso ao
+banco de dados agora deve estender de \texttt{AbstractHelper} e utilizar
+os métodos \texttt{getReadableDatabase()} e
+\texttt{getWritableDatabase()} para ler e escrever no banco de dados,
 respectivamente.
 
 A princípio temos que criar um construtor passando como parâmetros o
@@ -366,12 +368,67 @@ nome do banco de dados e a versão da \gls{ddl} (\emph{Data Definition
 Language}). Logo em seguida precisamos implementar os métodos
 \texttt{onCreate}, no qual iremos criar as tabelas e \texttt{onUpdate},
 caso tenhamos que alterar alguma tabela em versões futuras do
-aplicativo.
+aplicativo. Mais detalhes sobre isso em \ref{sssec:update-ddl}.
+
+\begin{listing}[H]
+  \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/AbstractHelper-1.java }
+  \caption{Helper da aplicação [AbstractHelper.java]}
+\end{listing}
+
+\subsubsection{Como funciona o SQLiteOpenHelper?}
+
+Ao estender de \texttt{SQLiteOpenHelper} somos obrigados a chamar seu
+construtor e passar alguns parâmetros para a super classe. Vamos
+indentificá-los:
+
+\begin{itemize}
+\item
+  \textbf{context}: significa quem tem acesso ao banco de dados, ou
+  seja, somente sua aplicação, como ela é a única que pode criar essa
+  classe, ela é a única que tem o direito de acessar.
+\item
+  \textbf{name}: nome do banco de dados a ser criado fisicamente no
+  Android.
+\item
+  \textbf{factory} $^1$: fábrica que cria a instância da classe Cursor,
+  que serve para acessar os dados após fazer queries. No nosso caso
+  passamos \texttt{null}. Isso se deve pelo fato de que queremos usar o
+  \texttt{Factory} padrão do Android. Caso queiramos criar um Cursor
+  especializado ai sim teremos que nos preocupar com esse parâmetro.
+\item
+  \textbf{version}: versão do banco de dados, usado para fazer
+  \emph{upgrade} ou \emph{downgrade} da \gls{ddl}.
+\end{itemize}
+\begin{enumerate}[1.]
+\item
+  \url{http://stackoverflow.com/a/11643417/1152679}
+\end{enumerate}
+Outros detalhes em
+\url{http://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html}.
+
+Tudo que temos a fazer a partir deste ponto para acessar o banco de
+dados é criar classes que estendam de \texttt{AbstractHelper}, no caso a
+primeira a ser criada é \texttt{ContatoHelper}.
 
 \begin{listing}[H]
   \inputminted[linenos=true,frame=bottomline,tabsize=3]{ java }{ source/ContatoHelper-1.java }
-  \caption{Helper da aplicação [ContatoHelper.java]}
+  \caption{Helper para acessar tabela contato [ContatoHelper.java]}
 \end{listing}
+
+Devido a classe \texttt{AbstractHelper} ser abstrata, é possível
+repassar a tarefa de implementar os método \texttt{onCreate} e
+\texttt{onUpdate} para as classes filhas. Dessa forma podemos tratar
+muito melhor a criação das tabelas referentes a classe em questão, como
+podemos ver nas linhas \circled{10} a \circled{29}.
+
+Também vemos uma classe interna que implementa \texttt{BaseColumns}. Ela
+é uma interface bem simples contendo apenas dois atributos,
+\texttt{\_id} e \texttt{\_count}. Entretanto é uma forma bem expressiva
+de definir as colunas de sua tabela e usá-las para fazer queries, entre
+outras coisas.
+
+A documentação pode ser encontrada em
+\url{http://developer.android.com/reference/android/provider/BaseColumns.html}.
 
 Para a iteração de criação de um novo contato, ainda em
 \texttt{ContatoHelper} vamos adicionar um método \texttt{criar}. Faça:
@@ -381,7 +438,61 @@ Para a iteração de criação de um novo contato, ainda em
   \caption{Criar novo contato [ContatoHelper.java]}
 \end{listing}
 
-Agora temos que fazer a chamada do método criar da classe
+\subsubsection{ContentProvider}
+
+Um \texttt{ContentProvider} é uma maneira universal de acesso aos dados,
+sejam eles em banco de dados, arquivo, rede (\emph{stream}), etc. Isso
+quer dizer que eles fazem uma abstração de como esses dados são
+acessados, além de permitir que outros aplicativos possam fazer uso das
+informações obtidas na sua aplicação.
+
+Vamos por partes. O \texttt{ContentProvider} é uma classe do Android que
+tem o objetivo de encapsular os dados e provê uma interface única para
+que outros aplicativos, inclusive o seu, tenham acesso a esses dados.
+Entretanto ele somente é necessário se você precisa compartilhar os
+dados entre outros aplicativos.
+
+Seu funcionamento é bem simples, um \texttt{ContentProvider} é
+identificado por um \gls{uri}, ou seja, um valor único que o representa.
+Um exemplo bem conhecido é a forma de acessar dados da internet através
+de \gls{http}, onde utilizamos uma \gls{url}. Uma URL é um conjunto
+específico de URI. Ao ser realizada uma requisição a um determinado URI
+para um \texttt{ContentResolver}, ele verifica quem é responsável por
+responder pelo URI e repassa a requisição. Uma URI genérica é escrita na
+forma:
+\texttt{\textless{}scheme\textgreater{}://\textless{}authority\textgreater{}\textless{}path\textgreater{}?\textless{}query\textgreater{}}.
+
+Os principais métodos a serem implementados são:
+
+\begin{itemize}
+\item
+  \texttt{onCreate()}: inicializa o \emph{provider};
+\item
+  \texttt{query(Uri, String{[}{]}, String, String{[}{]}, String)}:
+  realiza busca;
+\item
+  \texttt{insert(Uri, ContentValues)}: insere dados;
+\item
+  \texttt{update(Uri, ContentValues, String, String{[}{]})}: atualiza
+  dados;
+\item
+  \texttt{delete(Uri, String, String{[}{]})}: deleta dados;
+\item
+  \texttt{getType(Uri)}: obtém o \emph{MIME type} dos dados.
+\end{itemize}
+Mais detalhes em:
+
+\begin{itemize}
+\item
+  \url{http://developer.android.com/reference/android/content/ContentProvider.html}
+\item
+  \url{http://developer.android.com/guide/topics/providers/content-providers.html}
+\item
+  \url{http://www.faqs.org/rfcs/rfc2396.html}
+\item
+  \url{http://www.faqs.org/rfcs/rfc1738.html}
+\end{itemize}
+ Agora temos que fazer a chamada do método criar da classe
 \texttt{ContatoHelper} em \texttt{SalvarActivity}. Para isso temos que
 criar uma instância de \texttt{ContatoHelper}, adicionar o botão salvar
 e adicionar um \emph{Listener} de \emph{click} (faça o \emph{import} da

@@ -33,44 +33,46 @@
 \contentsline {subsubsection}{Commit}{18}{section*.21}
 \contentsline {subsubsection}{Commit}{18}{section*.22}
 \contentsline {subsection}{\numberline {2.1.4}Construindo o Model da aplica\IeC {\c c}\IeC {\~a}o }{18}{subsection.2.1.4}
-\contentsline {subsection}{\numberline {2.1.5}Mostrando os dados na View }{20}{subsection.2.1.5}
-\contentsline {subsection}{\numberline {2.1.6}Editando dados existentes }{24}{subsection.2.1.6}
-\contentsline {chapter}{\numberline {3}Livro de Receitas}{27}{chapter.3}
-\contentsline {section}{\numberline {3.1}Mostrando Di\IeC {\'a}logos}{27}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Editar/Excluir ao clicar e segurar na ListView}{27}{subsection.3.1.1}
-\contentsline {subsubsection}{Interface como par\IeC {\^a}metro de um m\IeC {\'e}todo}{29}{section*.23}
-\contentsline {subsection}{\numberline {3.1.2}Di\IeC {\'a}logo de confirma\IeC {\c c}\IeC {\~a}o}{29}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Entrada de diferentes tipos de dados}{31}{subsection.3.1.3}
-\contentsline {subsection}{\numberline {3.1.4}Valida\IeC {\c c}\IeC {\~a}o de dados}{32}{subsection.3.1.4}
-\contentsline {paragraph}{OBS:}{32}{section*.24}
-\contentsline {subsection}{\numberline {3.1.5}Fazendo uma liga\IeC {\c c}\IeC {\~a}o}{33}{subsection.3.1.5}
-\contentsline {subsection}{\numberline {3.1.6}Enviando e-mail}{35}{subsection.3.1.6}
-\contentsline {section}{\numberline {3.2}For\IeC {\c c}ando regi\IeC {\~a}o para teste}{36}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}For\IeC {\c c}ando regi\IeC {\~a}o pelo emulador}{37}{subsection.3.2.1}
-\contentsline {section}{\numberline {3.3}Utilizando as Prefer\IeC {\^e}ncias do Android}{37}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Atualizando colunas de uma tabela}{37}{subsection.3.3.1}
-\contentsline {subsection}{\numberline {3.3.2}Array de Strings}{39}{subsection.3.3.2}
-\contentsline {paragraph}{Dica:}{39}{section*.25}
-\contentsline {subsection}{\numberline {3.3.3}Spinner, di\IeC {\'a}logo de sele\IeC {\c c}\IeC {\~a}o}{40}{subsection.3.3.3}
-\contentsline {subsection}{\numberline {3.3.4}A classe PreferenceActivity}{41}{subsection.3.3.4}
-\contentsline {section}{\numberline {3.4}Grupo de Contatos usando Grid}{45}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Layout usando GridView}{45}{subsection.3.4.1}
-\contentsline {paragraph}{Dica:}{46}{section*.26}
-\contentsline {subsection}{\numberline {3.4.2}Activity para visualizar os Grupos}{46}{subsection.3.4.2}
-\contentsline {subsubsection}{Criando \IeC {\'\i }cones com Inkscape}{48}{section*.27}
-\contentsline {subsection}{\numberline {3.4.3}Implementando o Adapter}{50}{subsection.3.4.3}
-\contentsline {paragraph}{Observa\IeC {\c c}\IeC {\~a}o:}{51}{section*.28}
-\contentsline {subsection}{\numberline {3.4.4}Selecionando contatos de um determinado grupo}{51}{subsection.3.4.4}
-\contentsline {chapter}{\numberline {4}Servi\IeC {\c c}os e Internet}{55}{chapter.4}
-\contentsline {section}{\numberline {4.1}Fazendo requisi\IeC {\c c}\IeC {\~o}es HTTP}{55}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Servidor de requisi\IeC {\c c}\IeC {\~o}es HTTP}{55}{subsection.4.1.1}
-\contentsline {paragraph}{Observa\IeC {\c c}\IeC {\~a}o}{56}{section*.29}
-\contentsline {subsection}{\numberline {4.1.2}App que realiza acesso externo}{56}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}Tarefas em \emph {background} com \texttt {Service}}{61}{section.4.2}
-\contentsline {chapter}{\numberline {A}Sobre o Autor}{63}{appendix.A}
-\contentsline {section}{\numberline {A.1}Sugest\IeC {\~o}es e Cr\IeC {\'\i }ticas}{63}{section.A.1}
-\contentsline {section}{\numberline {A.2}C\IeC {\'o}digo-fonte deste guia}{63}{section.A.2}
-\contentsline {chapter}{\numberline {B}JSON }{65}{appendix.B}
-\contentsline {section}{\numberline {B.1}Estrutura}{65}{section.B.1}
-\contentsline {section}{\numberline {B.2}Exemplo}{66}{section.B.2}
-\contentsline {chapter}{Gloss\'ario}{69}{appendix*.30}
+\contentsline {subsubsection}{Como funciona o SQLiteOpenHelper?}{19}{section*.23}
+\contentsline {subsubsection}{ContentProvider}{21}{section*.24}
+\contentsline {subsection}{\numberline {2.1.5}Mostrando os dados na View }{23}{subsection.2.1.5}
+\contentsline {subsection}{\numberline {2.1.6}Editando dados existentes }{27}{subsection.2.1.6}
+\contentsline {chapter}{\numberline {3}Livro de Receitas}{31}{chapter.3}
+\contentsline {section}{\numberline {3.1}Mostrando Di\IeC {\'a}logos}{31}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Editar/Excluir ao clicar e segurar na ListView}{31}{subsection.3.1.1}
+\contentsline {subsubsection}{Interface como par\IeC {\^a}metro de um m\IeC {\'e}todo}{33}{section*.25}
+\contentsline {subsection}{\numberline {3.1.2}Di\IeC {\'a}logo de confirma\IeC {\c c}\IeC {\~a}o}{33}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Entrada de diferentes tipos de dados}{35}{subsection.3.1.3}
+\contentsline {subsection}{\numberline {3.1.4}Valida\IeC {\c c}\IeC {\~a}o de dados}{36}{subsection.3.1.4}
+\contentsline {paragraph}{OBS:}{36}{section*.26}
+\contentsline {subsection}{\numberline {3.1.5}Fazendo uma liga\IeC {\c c}\IeC {\~a}o}{37}{subsection.3.1.5}
+\contentsline {subsection}{\numberline {3.1.6}Enviando e-mail}{39}{subsection.3.1.6}
+\contentsline {section}{\numberline {3.2}For\IeC {\c c}ando regi\IeC {\~a}o para teste}{40}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}For\IeC {\c c}ando regi\IeC {\~a}o pelo emulador}{41}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Utilizando as Prefer\IeC {\^e}ncias do Android}{41}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Atualizando colunas de uma tabela }{41}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.2}Array de Strings}{43}{subsection.3.3.2}
+\contentsline {paragraph}{Dica:}{43}{section*.27}
+\contentsline {subsection}{\numberline {3.3.3}Spinner, di\IeC {\'a}logo de sele\IeC {\c c}\IeC {\~a}o}{44}{subsection.3.3.3}
+\contentsline {subsection}{\numberline {3.3.4}A classe PreferenceActivity}{45}{subsection.3.3.4}
+\contentsline {section}{\numberline {3.4}Grupo de Contatos usando Grid}{49}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Layout usando GridView}{49}{subsection.3.4.1}
+\contentsline {paragraph}{Dica:}{50}{section*.28}
+\contentsline {subsection}{\numberline {3.4.2}Activity para visualizar os Grupos}{50}{subsection.3.4.2}
+\contentsline {subsubsection}{Criando \IeC {\'\i }cones com Inkscape}{52}{section*.29}
+\contentsline {subsection}{\numberline {3.4.3}Implementando o Adapter}{54}{subsection.3.4.3}
+\contentsline {paragraph}{Observa\IeC {\c c}\IeC {\~a}o:}{55}{section*.30}
+\contentsline {subsection}{\numberline {3.4.4}Selecionando contatos de um determinado grupo}{55}{subsection.3.4.4}
+\contentsline {chapter}{\numberline {4}Servi\IeC {\c c}os e Internet}{59}{chapter.4}
+\contentsline {section}{\numberline {4.1}Fazendo requisi\IeC {\c c}\IeC {\~o}es HTTP}{59}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Servidor de requisi\IeC {\c c}\IeC {\~o}es HTTP}{59}{subsection.4.1.1}
+\contentsline {paragraph}{Observa\IeC {\c c}\IeC {\~a}o}{60}{section*.31}
+\contentsline {subsection}{\numberline {4.1.2}App que realiza acesso externo}{60}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}Tarefas em \emph {background} com \texttt {Service}}{65}{section.4.2}
+\contentsline {chapter}{\numberline {A}Sobre o Autor}{67}{appendix.A}
+\contentsline {section}{\numberline {A.1}Sugest\IeC {\~o}es e Cr\IeC {\'\i }ticas}{67}{section.A.1}
+\contentsline {section}{\numberline {A.2}C\IeC {\'o}digo-fonte deste guia}{67}{section.A.2}
+\contentsline {chapter}{\numberline {B}JSON }{69}{appendix.B}
+\contentsline {section}{\numberline {B.1}Estrutura}{69}{section.B.1}
+\contentsline {section}{\numberline {B.2}Exemplo}{70}{section.B.2}
+\contentsline {chapter}{Gloss\'ario}{73}{appendix*.32}
